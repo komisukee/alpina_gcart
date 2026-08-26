@@ -26,6 +26,9 @@
 	<link rel="apple-touch-icon" sizes="180x180" href="https://www.sunmeadows.co.jp/wp/wp-content/themes/original/lib/img/apple-touch-icon.png">
 	<link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
 	<link rel="stylesheet" href="https://www.sunmeadows.co.jp/wp/wp-content/themes/original/style.css?250829v2">
+	<!-- G-KART LP -->
+	<link rel="stylesheet" href="assets/css/style.css?v=20260826">
+	<script>document.documentElement.classList.add('gk-js');</script>
 	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<meta name='robots' content='max-image-preview:large' />
 <style id="wp-img-auto-sizes-contain-inline-css">
@@ -201,42 +204,497 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 			</header>
 
             <!-- ここにLPのコンテンツを実装 -->
-            <main>
-                <!-- FV -->
-                <div id="fv"></div>
+            <main class="gk">
 
-                <!-- 2nd：G-CARTの概要説明 -->
-                <div id="2nd"></div>
+                <!-- =========================================================
+                     ①FV
+                     ※デザインカンプ画像を仮置き（差し替え予定）
+                ========================================================== -->
+                <div id="fv" class="gk-fv">
+                    <div class="gk-fv__media">
+                        <picture><source type="image/webp" srcset="assets/images/fv.webp"><img class="gk-fv__img" src="assets/images/fv.jpg" alt="G-KART KIYOSATO いち度乗ったら、やめられない。絶景爽快ライド。" width="750" height="430" fetchpriority="high"></picture>
+                    </div>
+                </div>
 
-                <!-- G-CART搭乗条件 -->
-                <div id="bording_condition"></div>
+                <!-- =========================================================
+                     ②2nd：G-CARTの概要説明
+                ========================================================== -->
+                <div id="2nd" class="gk-sec gk-about">
+                    <span class="gk-slash gk-slash--navy gk-about__slash1" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--blue gk-about__slash2" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--orange gk-about__slash3" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--navy gk-about__slash4" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--blue gk-about__slash5" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--orange gk-about__slash6" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--orange gk-about__slash7" aria-hidden="true"></span>
 
-                <!-- コース説明 -->
-                <div id="course"></div>
+                    <div class="gk-container">
+                        <div class="gk-about__intro">
+                            <figure class="gk-about__cutout" data-gk-fade="left">
+                                <picture><source type="image/webp" srcset="assets/images/2nd_1.webp"><img src="assets/images/2nd_1.png" alt="お子様と一緒にG-KARTに同乗する様子" width="450" height="479" loading="lazy" decoding="async"></picture>
+                            </figure>
+                            <ul class="gk-badges" data-gk-fade="right">
+                                <li class="gk-badge"><span>3歳から<br>同乗</span></li>
+                                <li class="gk-badge gk-badge--lg"><span>小学<br>3年生から<br>ひとり</span></li>
+                            </ul>
+                        </div>
 
-                <!-- カートについて -->
-                <div id="cart"></div>
+                        <div class="gk-about__catch">
+                            <h2 class="gk-h2" data-gk-fade>いち度乗ったら<br>やめられない。<br>絶景爽快ライド。</h2>
+                            <figure class="gk-about__cutout2" data-gk-fade="right" aria-hidden="true">
+                                <picture><source type="image/webp" srcset="assets/images/2nd_2.webp"><img src="assets/images/2nd_2.png" alt="" width="240" height="203" loading="lazy" decoding="async"></picture>
+                            </figure>
+                        </div>
 
-                <!-- 安全について -->
-                <div id="safety"></div>
+                        <p class="gk-lead gk-center" data-gk-fade>標高約1,700mの山頂から、<br>動力を持たないカートで一気に駆けおりる。</p>
 
-                <!-- 料金：CTA1 -->
-                <div id="charge"></div>
+                        <ul class="gk-chips" data-gk-fade>
+                            <li class="gk-chip">約1,700m</li>
+                            <li class="gk-chip">約30km/h</li>
+                            <li class="gk-chip">リフト券込み</li>
+                        </ul>
 
-                <!-- 1日の過ごし方：走る絶景から、憩う絶景へ -->
-                <div id="dialy"></div>
+                        <div class="gk-btns" data-gk-fade>
+                            <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
+                                <span class="gk-btn__label">前売券を購入する</span>
+                                <span class="gk-btn__arrow" aria-hidden="true"></span>
+                            </a>
+                            <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/green/hours_fare/">
+                                <span class="gk-btn__label">料金・営業時間を見る</span>
+                                <span class="gk-btn__arrow" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
 
-                <!-- アクセス -->
-                <div id="access"></div>
+                    <div class="gk-container gk-about__gallery">
+                        <div class="gk-about__block gk-about__block--l">
+                            <h2 class="gk-h2" data-gk-fade>みんな、<br>夢中になる。</h2>
+                            <figure class="gk-figure gk-figure--l" data-gk-fade="up">
+                                <picture><source type="image/webp" srcset="assets/images/2nd_3.webp"><img src="assets/images/2nd_3.jpg" alt="親子でG-KARTに乗ってコースを駆けおりる様子" width="800" height="533" loading="lazy" decoding="async"></picture>
+                                <figcaption class="gk-figure__cap">標高1,700mを、駆けおりる休日。</figcaption>
+                            </figure>
+                        </div>
 
-                <!-- FAQ -->
-                <div id="faq"></div>
+                        <div class="gk-about__block gk-about__block--r">
+                            <figure class="gk-figure gk-figure--r" data-gk-fade="up">
+                                <picture><source type="image/webp" srcset="assets/images/2nd_4.webp"><img src="assets/images/2nd_4.jpg" alt="ひとりでG-KARTを運転する女性" width="800" height="533" loading="lazy" decoding="async"></picture>
+                                <figcaption class="gk-figure__cap">怖くない。ただ、速い。</figcaption>
+                            </figure>
+                        </div>
 
-                <!-- CTA2 -->
-                <div id="cta"></div>
+                        <div class="gk-about__block gk-about__block--c">
+                            <h2 class="gk-h2 gk-center" data-gk-fade>はじめての<br>「自分で運転」。</h2>
+                            <figure class="gk-figure gk-figure--full" data-gk-fade="up">
+                                <picture><source type="image/webp" srcset="assets/images/2nd_5.webp"><img src="assets/images/2nd_5.jpg" alt="お子様がひとりでG-KARTを運転する様子" width="1000" height="667" loading="lazy" decoding="async"></picture>
+                            </figure>
+                            <p class="gk-lead gk-center" data-gk-fade>降りてきたときの顔が、少しだけ大人になっています。<br>初めての方も、何度も乗っている方も。<br>楽しみ方は無限大です。</p>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- FloatingCTA -->
-                <div id="floating_cta"></div>
+                <!-- =========================================================
+                     ③G-CART搭乗条件
+                ========================================================== -->
+                <div id="bording_condition" class="gk-sec gk-joken">
+                    <div class="gk-check gk-check--orange" aria-hidden="true"></div>
+
+                    <div class="gk-joken__inner">
+                        <div class="gk-container">
+                            <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>G-KARTの搭乗条件</h2>
+                            <p class="gk-sub gk-sub--white gk-center" data-gk-fade>年齢から、乗り方が決まります。</p>
+
+                            <figure class="gk-figure gk-figure--full" data-gk-fade="up">
+                                <picture><source type="image/webp" srcset="assets/images/bording_condition_1.webp"><img src="assets/images/bording_condition_1.jpg" alt="ご家族でG-KARTを楽しむ様子" width="1000" height="601" loading="lazy" decoding="async"></picture>
+                            </figure>
+
+                            <div class="gk-tablewrap" data-gk-fade>
+                                <table class="gk-table">
+                                    <thead>
+                                        <tr><th scope="col">年齢</th><th scope="col">乗り方</th><th scope="col">料金</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><th scope="row">3歳〜未就学児</th><td>同乗</td><td>3,200円</td></tr>
+                                        <tr><th scope="row">小学1・2年生</th><td>同乗</td><td>3,400円</td></tr>
+                                        <tr><th scope="row">小学3年生〜</th><td>ひとりで</td><td>4,400円〜</td></tr>
+                                        <tr><th scope="row">中学生〜大人</th><td>ひとりで</td><td>5,000円〜</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="gk-joken__hand" data-gk-fade>
+                                <h3 class="gk-h3 gk-h3--white">手の大きさが心配な方へ</h3>
+                                <p class="gk-body gk-body--white">チケット売場付近に実機を展示しています。ご購入前にブレーキを握って確かめられます。</p>
+                            </div>
+
+                            <ul class="gk-notes" data-gk-fade>
+                                <li>子ども同士での同乗は、安全上お受けできません</li>
+                                <li>同乗のお子様にも、タンデム券が必要です</li>
+                                <li>初めての方は必ずビギナーコースから</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="gk-check gk-check--orange" aria-hidden="true"></div>
+                </div>
+
+                <!-- =========================================================
+                     ④コース説明
+                ========================================================== -->
+                <div id="course" class="gk-sec gk-course">
+                    <div class="gk-container">
+                        <h2 class="gk-h2 gk-center" data-gk-fade>初めての人にも、<br>攻めたい人にも。</h2>
+                        <figure class="gk-course__map" data-gk-fade="up">
+                            <img src="assets/images/course_1.png" alt="コースマップ。EXPERT エキスパートコースは短い直線と不規則なカーブ、全長825.25m／幅3.5m。BEGINNER ビギナーコースは直線が多くカーブも緩やか、全長753.63m／幅3.5m。※初めて搭乗されるお客様は、必ずビギナーコースのご利用になります。" width="1972" height="2361" loading="lazy" decoding="async">
+                        </figure>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑤カートについて
+                ========================================================== -->
+                <div id="cart" class="gk-sec gk-cart">
+                    <div class="gk-container">
+                        <div class="gk-cart__head">
+                            <h2 class="gk-h2" data-gk-fade>カートについて</h2>
+                            <figure class="gk-cart__img" data-gk-fade="right" aria-hidden="true">
+                                <picture><source type="image/webp" srcset="assets/images/cart.webp"><img src="assets/images/cart.png" alt="" width="280" height="238" loading="lazy" decoding="async"></picture>
+                            </figure>
+                        </div>
+
+                        <div class="gk-acc" data-gk-fade>
+                            <h3 class="gk-acc__head">
+                                <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-acc-spec">
+                                    <span class="gk-acc__title">マシンスペック</span>
+                                    <span class="gk-acc__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="gk-acc__panel" id="gk-acc-spec">
+                                <div class="gk-acc__inner">
+                                    <p class="gk-spec__model">NZ Luge cart World社製　LX8</p>
+                                    <dl class="gk-spec">
+                                        <div class="gk-spec__row"><dt>全長</dt><dd>1,500㎜</dd></div>
+                                        <div class="gk-spec__row"><dt>全幅</dt><dd>640㎜</dd></div>
+                                        <div class="gk-spec__row"><dt>全高</dt><dd>330㎜</dd></div>
+                                        <div class="gk-spec__row"><dt>質量</dt><dd>35kg</dd></div>
+                                        <div class="gk-spec__row"><dt>車輪</dt><dd>3輪</dd></div>
+                                        <div class="gk-spec__row"><dt>定員</dt><dd>2名　3歳以上身長120cm以下の子供と</dd></div>
+                                        <div class="gk-spec__row"><dt>ブレーキ</dt><dd>油圧式ディスクブレーキ</dd></div>
+                                        <div class="gk-spec__row"><dt>ボディ</dt><dd>ポリプロペン製/UV保護</dd></div>
+                                        <div class="gk-spec__row"><dt>体重制限</dt><dd>120kgまで(同乗の場合も合計)</dd></div>
+                                        <div class="gk-spec__row"><dt>最高スピード</dt><dd>約30km/h</dd></div>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑥安全について
+                ========================================================== -->
+                <div id="safety" class="gk-sec gk-safety">
+                    <span class="gk-slash gk-slash--white gk-safety__slash1" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--blue gk-safety__slash2" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--orange gk-safety__slash3" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--white gk-safety__slash4" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--blue gk-safety__slash5" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--orange gk-safety__slash6" aria-hidden="true"></span>
+                    <span class="gk-slash gk-slash--white gk-safety__slash7" aria-hidden="true"></span>
+
+                    <div class="gk-container">
+                        <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>こうして、<br>安全は守られています。</h2>
+                        <p class="gk-sub gk-sub--white gk-center" data-gk-fade>初めてのお子様が、安全に降りてこられるように。</p>
+
+                        <ul class="gk-circles" data-gk-fade="up">
+                            <li class="gk-circle gk-circle--a"><span>搭乗前<br>レクチャー</span></li>
+                            <li class="gk-circle gk-circle--b"><span>ヘルメット<br>無料</span></li>
+                            <li class="gk-circle gk-circle--c"><span>係員が<br>見ています</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- ループスライダー（右から左へ無限ループ） -->
+                    <!-- TODO: 素材手配後、.gk-ph を <img> に差し替え -->
+                    <div class="gk-marquee gk-safety__slider" data-gk-marquee data-gk-fade>
+                        <div class="gk-marquee__track">
+                            <ul class="gk-marquee__group">
+                                <li class="gk-marquee__item"><div class="gk-ph">素材手配待ち</div></li>
+                                <li class="gk-marquee__item"><div class="gk-ph">素材手配待ち</div></li>
+                                <li class="gk-marquee__item"><div class="gk-ph">素材手配待ち</div></li>
+                                <li class="gk-marquee__item"><div class="gk-ph">素材手配待ち</div></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="gk-container">
+                        <div class="gk-acc gk-acc--dark" data-gk-fade>
+                            <h3 class="gk-acc__head">
+                                <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-acc-onegai">
+                                    <span class="gk-acc__title">ご利用にあたってのお願い</span>
+                                    <span class="gk-acc__icon" aria-hidden="true"></span>
+                                </button>
+                            </h3>
+                            <div class="gk-acc__panel" id="gk-acc-onegai">
+                                <div class="gk-acc__inner">
+                                    <p class="gk-body">安全のため、係員の指示や標識、掲示されている注意などに従って搭乗ください。</p>
+                                    <ul class="gk-dotlist">
+                                        <li>搭乗時はヘルメットを装着してください（無料でお貸しいたします）。ご自身のヘルメットをご利用になる場合はお客様の責任でご利用ください。</li>
+                                        <li>飲酒もしくはアルコール、薬物を摂取をされている方の搭乗はお断りいたします。</li>
+                                        <li>スピードの出し過ぎ等、お客様ご自身と周囲の安全には十分配慮してお楽しみください。</li>
+                                        <li>理由なくコースの途中で停止をしたりカートから降りてコースに立つなどの行為はやめてください。</li>
+                                        <li>カート本体もしくはコースを故意に損傷させるような行為や走行はしないでください。</li>
+                                        <li>雷の発生や悪天候などの理由により、営業を中止又は中断する場合がございます。</li>
+                                        <li>無断でコース内に立ち入ることは禁止です。決められた場所での見学をお願いいたします。</li>
+                                        <li>走行中に事故などに遭遇した場合には速やかにお知らせください、また事故の調査にご協力をお願いいたします。</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑦料金：CTA1
+                ========================================================== -->
+                <div id="charge" class="gk-sec gk-charge">
+                    <div class="gk-check gk-check--orange" aria-hidden="true"></div>
+
+                    <div class="gk-charge__inner">
+                        <div class="gk-container">
+                            <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>料金</h2>
+                            <p class="gk-charge__sub gk-center" data-gk-fade>（すべてリフト券込み）</p>
+
+                            <div class="gk-tablewrap" data-gk-fade>
+                                <table class="gk-table gk-table--4">
+                                    <thead>
+                                        <tr><th scope="col">券種</th><th scope="col">大人</th><th scope="col">子供</th><th scope="col">前売り</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><th scope="row">乗車券</th><td>5,000円</td><td>4,400円</td><td>-</td></tr>
+                                        <tr><th scope="row">3回乗車</th><td>6,000円</td><td>5,400円</td><td>5,000円〜</td></tr>
+                                        <tr><th scope="row">5回乗車</th><td>7,000円</td><td>6,400円</td><td>5,800円〜</td></tr>
+                                        <tr><th scope="row">タンデム</th><td>3,400円</td><td>3,200円</td><td>3,300円〜</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <ol class="gk-steps" data-gk-fade>
+                                <li class="gk-step"><span class="gk-step__num">1</span><span class="gk-step__label">前日までに購入</span></li>
+                                <li class="gk-step"><span class="gk-step__num">2</span><span class="gk-step__label">専用レーンで引換</span></li>
+                                <li class="gk-step"><span class="gk-step__num">3</span><span class="gk-step__label">そのまま搭乗</span></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="gk-charge__cta">
+                        <div class="gk-container">
+                            <div class="gk-btns" data-gk-fade>
+                                <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
+                                    <span class="gk-btn__label">前売券を購入する</span>
+                                    <span class="gk-btn__arrow" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑧1日の過ごし方：走る絶景から、憩う絶景へ
+                ========================================================== -->
+                <div id="dialy" class="gk-sec gk-daily">
+                    <div class="gk-container">
+                        <h2 class="gk-h2 gk-center" data-gk-fade>走る絶景から、<br>憩う絶景へ</h2>
+                        <p class="gk-sub gk-center" data-gk-fade>同じリフト券で、標高1,900mの清里テラスまで。</p>
+                    </div>
+
+                    <!-- ループスライダー（右から左へ無限ループ） -->
+                    <div class="gk-marquee gk-daily__slider" data-gk-marquee data-gk-fade>
+                        <div class="gk-marquee__track">
+                            <ul class="gk-marquee__group">
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/dairy_1.webp"><img src="assets/images/dairy_1.jpg" alt="清里テラスから望む絶景" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/dairy_2.webp"><img src="assets/images/dairy_2.jpg" alt="山頂へ向かうパノラマリフト" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/dairy_3.webp"><img src="assets/images/dairy_3.jpg" alt="雲海を望む清里テラスのソファ席" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="gk-container">
+                        <p class="gk-banner" data-gk-fade><span>1日の過ごし方</span></p>
+
+                        <ol class="gk-timeline" data-gk-fade>
+                            <li class="gk-tl"><span class="gk-tl__time">9:30</span><span class="gk-tl__label">到着</span></li>
+                            <li class="gk-tl"><span class="gk-tl__time">10:00</span><span class="gk-tl__label">G-KART</span></li>
+                            <li class="gk-tl"><span class="gk-tl__time">12:00</span><span class="gk-tl__label">ランチ</span></li>
+                            <li class="gk-tl"><span class="gk-tl__time">13:30</span><span class="gk-tl__label">テラスで休憩</span></li>
+                            <li class="gk-tl"><span class="gk-tl__time">15:00</span><span class="gk-tl__label">もう1本走って下山</span></li>
+                        </ol>
+
+                        <p class="gk-body gk-center" data-gk-fade>孫はカート、祖父母はテラス。<br>それぞれの一日</p>
+
+                        <div class="gk-btns" data-gk-fade>
+                            <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/green/parkguide/kiyosato_teracce/">
+                                <span class="gk-btn__label">清里テラスの詳細はこちら</span>
+                                <span class="gk-btn__arrow" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑨アクセス
+                ========================================================== -->
+                <div id="access" class="gk-sec gk-access">
+                    <div class="gk-check gk-check--gray" aria-hidden="true"></div>
+
+                    <div class="gk-access__inner">
+                        <div class="gk-container">
+                            <p class="gk-banner gk-banner--orange" data-gk-fade><span>首都圏から、車で約2時間。</span></p>
+                            <p class="gk-body gk-center" data-gk-fade>中央道でまっすぐ。ICを降りてからも、20〜30分です。</p>
+                        </div>
+
+                        <div class="gk-access__map" data-gk-fade="up">
+                            <iframe src="https://maps.google.com/maps?q=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8C%97%E6%9D%9C%E5%B8%82%E5%A4%A7%E6%B3%89%E7%94%BA%E8%A5%BF%E4%BA%95%E5%87%BA8240-1&amp;z=14&amp;output=embed" title="サンメドウズ清里スキー場 周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="gk-container">
+                            <dl class="gk-access__info" data-gk-fade>
+                                <div class="gk-access__row"><dt>所在地</dt><dd>山梨県北杜市大泉町西井出8240-1</dd></div>
+                                <div class="gk-access__row"><dt>お問い合わせ</dt><dd><a href="tel:0551484111">0551-48-4111</a></dd></div>
+                            </dl>
+
+                            <div class="gk-btns" data-gk-fade>
+                                <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/access/">
+                                    <span class="gk-btn__label">詳しいアクセス情報を見る</span>
+                                    <span class="gk-btn__arrow" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gk-check gk-check--gray" aria-hidden="true"></div>
+                </div>
+
+                <!-- =========================================================
+                     ⑩FAQ
+                ========================================================== -->
+                <div id="faq" class="gk-sec gk-faq">
+                    <div class="gk-container">
+                        <h2 class="gk-h2 gk-center" data-gk-fade>よくあるご質問</h2>
+
+                        <div class="gk-faq__list" data-gk-fade>
+                            <div class="gk-acc gk-acc--faq">
+                                <h3 class="gk-acc__head">
+                                    <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-faq-1">
+                                        <span class="gk-acc__q" aria-hidden="true">Q</span>
+                                        <span class="gk-acc__title">サンダルやハイヒール乗車が可能？</span>
+                                        <span class="gk-acc__icon" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="gk-acc__panel" id="gk-faq-1">
+                                    <div class="gk-acc__inner">
+                                        <p class="gk-faq__a"><span class="gk-acc__a" aria-hidden="true">A</span>サンダルでも大丈夫ですが靴が一番望ましいです。<br>リュックなど背負う物はリフト山麓にある荷物置きに置くか抱えるようにして乗車してください。<br>ヘルメットは大人用、子供用とあり　ダイヤルがついているのでフィットさせることができます。　マイヘルメットも可能です。</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gk-acc gk-acc--faq">
+                                <h3 class="gk-acc__head">
+                                    <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-faq-2">
+                                        <span class="gk-acc__q" aria-hidden="true">Q</span>
+                                        <span class="gk-acc__title">3回券を分けて3人で遊ぶことはできますか？</span>
+                                        <span class="gk-acc__icon" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="gk-acc__panel" id="gk-faq-2">
+                                    <div class="gk-acc__inner">
+                                        <!-- TODO: 回答テキスト差し替え（デザインカンプに記載なし） -->
+                                        <p class="gk-faq__a"><span class="gk-acc__a" aria-hidden="true">A</span>（回答テキストが入ります）</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="gk-acc gk-acc--faq">
+                                <h3 class="gk-acc__head">
+                                    <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-faq-3">
+                                        <span class="gk-acc__q" aria-hidden="true">Q</span>
+                                        <span class="gk-acc__title">サンダルやハイヒール乗車が可能？</span>
+                                        <span class="gk-acc__icon" aria-hidden="true"></span>
+                                    </button>
+                                </h3>
+                                <div class="gk-acc__panel" id="gk-faq-3">
+                                    <div class="gk-acc__inner">
+                                        <!-- TODO: 設問・回答テキスト差し替え（カンプ上は1件目と同一のダミー） -->
+                                        <p class="gk-faq__a"><span class="gk-acc__a" aria-hidden="true">A</span>（回答テキストが入ります）</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="gk-h3 gk-center gk-faq__yakkan-ttl" data-gk-fade>チケット約款</h3>
+
+                        <div class="gk-acc gk-acc--black" data-gk-fade>
+                            <h4 class="gk-acc__head">
+                                <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-acc-yakkan">
+                                    <span class="gk-acc__title">チケット約款はこちら</span>
+                                    <span class="gk-acc__icon" aria-hidden="true"></span>
+                                </button>
+                            </h4>
+                            <div class="gk-acc__panel" id="gk-acc-yakkan">
+                                <div class="gk-acc__inner">
+                                    <!-- TODO: 約款テキスト差し替え（デザインカンプに記載なし） -->
+                                    <p class="gk-body">（約款テキストが入ります）</p>
+                                    <p class="gk-body"><a href="https://www.sunmeadows.co.jp/report/regulations/">施設利用約款はこちら</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- =========================================================
+                     ⑪CTA2
+                ========================================================== -->
+                <div id="cta" class="gk-sec gk-cta2">
+                    <!-- ループスライダー（右から左へ無限ループ） -->
+                    <div class="gk-marquee gk-cta2__slider" data-gk-marquee data-gk-fade>
+                        <div class="gk-marquee__track">
+                            <ul class="gk-marquee__group">
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/cta2_1.webp"><img src="assets/images/cta2_1.jpg" alt="FIRST RIDE と表示されたスタートゲート" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/cta2_2.webp"><img src="assets/images/cta2_2.jpg" alt="スタートゲートを飛び出すG-KART" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                                <li class="gk-marquee__item"><picture><source type="image/webp" srcset="assets/images/cta2_3.webp"><img src="assets/images/cta2_3.jpg" alt="スタート地点に並ぶG-KARTの車両" width="900" height="600" loading="lazy" decoding="async"></picture></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="gk-container">
+                        <h2 class="gk-h2 gk-center" data-gk-fade>前日までの購入で、<br>当日はそのまま。</h2>
+                        <p class="gk-body gk-center" data-gk-fade>窓口に並ばず、専用レーンで引き換えて、すぐに受付へ。</p>
+                        <p class="gk-small gk-center" data-gk-fade>※ 引き換えは専用レーンで。</p>
+
+                        <div class="gk-btns" data-gk-fade>
+                            <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
+                                <span class="gk-btn__label">前売券を購入する</span>
+                                <span class="gk-btn__arrow" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <dl class="gk-cta2__info">
+                        <div class="gk-cta2__cell"><dt>営業時間</dt><dd>9:30〜17:00</dd></div>
+                        <div class="gk-cta2__cell"><dt>お問い合わせ</dt><dd><a href="tel:0551484111">0551-48-4111</a></dd></div>
+                    </dl>
+                </div>
+
+                <!-- =========================================================
+                     ⑫floatingCTA
+                ========================================================== -->
+                <div id="floating_cta" class="gk-floating" data-gk-floating>
+                    <div class="gk-floating__inner">
+                        <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
+                            <span class="gk-btn__label">前売券を購入する</span>
+                            <span class="gk-btn__arrow" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+
             </main>
 
             <!-- 共通フッター：ここは変更しないでください -->
@@ -409,5 +867,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 	window.gtranslateSettings['29903483'] = {"default_language":"ja","languages":["ja","en","zh-TW","zh-CN","ko","th"],"url_structure":"none","native_language_names":1,"flag_style":"2d","flag_size":24,"alt_flags":[],"flags_location":"/wp/wp-content/plugins/gtranslate/flags/"};
 	</script>
 	<script src="https://www.sunmeadows.co.jp/wp/wp-content/plugins/gtranslate/js/base.js?ver=3.1.1" data-no-optimize="1" data-no-minify="1" data-gt-orig-url="/green/g-kart/" data-gt-orig-domain="www.sunmeadows.co.jp" data-gt-widget-id="29903483" defer></script>
+	<!-- G-KART LP -->
+	<script src="assets/js/script.js?v=20260826" defer></script>
 </body>
 </html>

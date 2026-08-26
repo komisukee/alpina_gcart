@@ -1,0 +1,1536 @@
+@charset "UTF-8";
+/* ==========================================================================
+   G-KART LP  (sunmeadows.co.jp / green / g-kart)
+   - デザインカンプ: design/lp_1.png 〜 lp_3.png（幅750px = SP実寸375pxの2倍）
+   - 既存WordPressテーマのCSSと衝突しないよう、全て .gk 配下にスコープする
+   - 寸法はカンプ実寸(750基準)を --u で等比スケールして指定する
+     例) カンプ 68px  ->  calc(68 * var(--u))
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens
+   -------------------------------------------------------------------------- */
+.gk {
+	/* カンプ1px あたりのCSS px。375vwで0.5、viewport 562px以上で0.75に固定 */
+	--u: min(0.13333vw, 0.75px);
+
+	/* color */
+	--c-white: #ffffff;
+	--c-blue: #1b7fbd;
+	--c-navy: #0b3c5d;
+	--c-orange: #e8842c;
+	--c-orange-dark: #c96a1a;
+	--c-orange-check: #e57a27;
+	--c-black: #141414;
+	--c-text: #1a1a1a;
+	--c-gray: #cccccc;
+	--c-gray-check: #a3a3a3;
+	--c-gray-bg: #f0f0f0;
+	--c-table-head: #e0d8cd;
+	--c-table-zebra: #f2f2f2;
+
+	/* type：外部フォントは使わず OS 標準の sans-serif を使用
+	   mac/iOS = ヒラギノ角ゴ、Windows = メイリオ / MS ゴシック、Android = Noto Sans JP */
+	--f-base: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", Meiryo, "MS PGothic", sans-serif;
+
+	/* layout */
+	--container: calc(750 * var(--u));
+	--gutter: calc(48 * var(--u));
+
+	/* 共通ヘッダー（position: fixed）の高さ。
+	   テーマ content.css の .gheader と同じブレイクポイント・値。
+	   実際の高さは script.js が実測して上書きする */
+	--header-h: 145px;
+
+	/* motion */
+	--fade-dur: .8s;
+	--fade-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+@media only screen and (max-width: 1279px) {
+
+	.gk {
+		--header-h: 115px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+
+	.gk {
+		--header-h: 100px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   2. Scoped reset（テーマCSSの打ち消し）
+   -------------------------------------------------------------------------- */
+.gk,
+.gk * {
+	box-sizing: border-box;
+}
+
+.gk {
+	position: relative;
+	overflow-x: clip;
+	margin: 0;
+	padding: 0;
+	color: var(--c-text);
+	font-family: var(--f-base);
+	font-weight: 500;
+	line-height: 1.6;
+	letter-spacing: .02em;
+	/* 日本語の約物・かなを詰める（カンプの字送りに合わせる） */
+	font-feature-settings: "palt" 1;
+	background: var(--c-white);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* :where() で詳細度を 0 にし、後述のコンポーネント指定が必ず勝つようにする */
+:where(.gk) :where(h2, h3, h4, p, ul, ol, dl, dt, dd, figure, figcaption, table, iframe) {
+	margin: 0;
+	padding: 0;
+}
+
+:where(.gk) :where(ul, ol) {
+	list-style: none;
+}
+
+:where(.gk) picture {
+	display: block;
+}
+
+:where(.gk) img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	border: 0;
+}
+
+:where(.gk) a {
+	color: inherit;
+	text-decoration: none;
+	transition: opacity .3s;
+}
+
+:where(.gk) a:hover {
+	opacity: .75;
+}
+
+:where(.gk) button {
+	appearance: none;
+	margin: 0;
+	padding: 0;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	background: none;
+	border: 0;
+	border-radius: 0;
+	cursor: pointer;
+}
+
+:where(.gk) table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.gk :focus-visible {
+	outline: calc(4 * var(--u)) solid var(--c-blue);
+	outline-offset: calc(2 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   3. Layout helpers
+   -------------------------------------------------------------------------- */
+.gk-sec {
+	position: relative;
+}
+
+.gk-container {
+	width: 100%;
+	max-width: var(--container);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.gk-center {
+	text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography
+   -------------------------------------------------------------------------- */
+.gk-h2 {
+	font-family: var(--f-base);
+	font-size: calc(68 * var(--u));
+	font-weight: 900;
+	line-height: 1.4;
+	letter-spacing: .02em;
+	color: var(--c-orange);
+}
+
+.gk-h2--white {
+	font-family: var(--f-base);
+	font-size: calc(64 * var(--u));
+	font-weight: 700;
+	letter-spacing: 0;
+	color: var(--c-white);
+}
+
+.gk-h3 {
+	font-size: calc(30 * var(--u));
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.gk-sub {
+	font-size: calc(28 * var(--u));
+	font-weight: 500;
+	line-height: 1.7;
+}
+
+.gk-sub--white {
+	color: var(--c-white);
+}
+
+.gk-lead,
+.gk-body {
+	font-size: calc(27 * var(--u));
+	line-height: 1.55;
+}
+
+.gk-body--white {
+	color: var(--c-white);
+}
+
+.gk-small {
+	font-size: calc(23 * var(--u));
+	line-height: 1.8;
+}
+
+/* --------------------------------------------------------------------------
+   5. Buttons
+   -------------------------------------------------------------------------- */
+.gk-btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: calc(12 * var(--u));
+}
+
+.gk-btn {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	max-width: calc(516 * var(--u));
+	min-height: calc(104 * var(--u));
+	padding: calc(14 * var(--u)) calc(88 * var(--u)) calc(14 * var(--u)) calc(40 * var(--u));
+	font-size: calc(30 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+	text-align: left;
+	border-radius: 999px;
+	overflow: hidden;
+	transition: transform .2s, box-shadow .2s, background-color .3s;
+}
+
+.gk-btn:hover {
+	opacity: 1;
+}
+
+.gk-btn__label {
+	position: relative;
+	z-index: 1;
+	white-space: nowrap;
+}
+
+/* 右端の矢印 */
+.gk-btn__arrow {
+	position: absolute;
+	top: 50%;
+	right: calc(22 * var(--u));
+	z-index: 1;
+	width: calc(52 * var(--u));
+	height: calc(52 * var(--u));
+	margin-top: calc(-26 * var(--u));
+	border-radius: 50%;
+}
+
+.gk-btn__arrow::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: currentColor;
+	-webkit-mask: no-repeat center / calc(24 * var(--u)) auto url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='M3 12h17M13.5 5.5 20 12l-6.5 6.5'/%3E%3C/svg%3E");
+	mask: no-repeat center / calc(24 * var(--u)) auto url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='M3 12h17M13.5 5.5 20 12l-6.5 6.5'/%3E%3C/svg%3E");
+}
+
+/* primary：オレンジ・立体・チェッカーフラッグ */
+.gk-btn--primary {
+	color: var(--c-white);
+	background-color: var(--c-orange);
+	box-shadow: 0 calc(10 * var(--u)) 0 var(--c-orange-dark);
+	margin-bottom: calc(10 * var(--u));
+}
+
+.gk-btn--primary::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	width: calc(180 * var(--u));
+	background-image:
+		linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .18) 45%, rgba(255, 255, 255, .18) 100%),
+		conic-gradient(#fff 25%, transparent 0 50%, #fff 0 75%, transparent 0);
+	background-size: 100% 100%, calc(56 * var(--u)) calc(56 * var(--u));
+	background-position: 0 0, 0 0;
+	background-blend-mode: multiply, normal;
+	opacity: .22;
+	transform: skewX(-20deg) translateX(calc(30 * var(--u)));
+	pointer-events: none;
+}
+
+.gk-btn--primary:hover {
+	background-color: #ef9142;
+	transform: translateY(calc(3 * var(--u)));
+	box-shadow: 0 calc(7 * var(--u)) 0 var(--c-orange-dark);
+}
+
+.gk-btn--primary .gk-btn__arrow {
+	color: var(--c-orange);
+	background: var(--c-white);
+}
+
+/* outline：白地・黒枠 */
+.gk-btn--outline {
+	color: var(--c-black);
+	background-color: var(--c-white);
+	box-shadow: inset 0 0 0 calc(5 * var(--u)) var(--c-black);
+}
+
+.gk-btn--outline:hover {
+	color: var(--c-white);
+	background-color: var(--c-black);
+}
+
+.gk-btn--outline .gk-btn__arrow {
+	color: var(--c-white);
+	background: var(--c-black);
+}
+
+.gk-btn--outline:hover .gk-btn__arrow {
+	color: var(--c-black);
+	background: var(--c-white);
+}
+
+/* --------------------------------------------------------------------------
+   6. チェック柄ボーダー（左から右へ無限ループ）
+   -------------------------------------------------------------------------- */
+.gk-check {
+	--sq: calc(30 * var(--u));
+	position: relative;
+	z-index: 1;
+	height: calc(var(--sq) * 2);
+	background-color: var(--c-orange);
+	background-image: conic-gradient(var(--check-c) 25%, transparent 0 50%, var(--check-c) 0 75%, transparent 0);
+	background-size: calc(var(--sq) * 2) calc(var(--sq) * 2);
+	background-repeat: repeat;
+	animation: gk-check-flow 3s linear infinite;
+}
+
+.gk-check--orange {
+	--check-c: var(--c-orange-check);
+	background-color: var(--c-orange);
+}
+
+.gk-check--gray {
+	--check-c: var(--c-gray-check);
+	background-color: var(--c-gray);
+}
+
+@keyframes gk-check-flow {
+	from {
+		background-position-x: 0;
+	}
+
+	to {
+		background-position-x: calc(30 * var(--u) * 2);
+	}
+}
+
+/* --------------------------------------------------------------------------
+   7. 斜めスラッシュ装飾
+   -------------------------------------------------------------------------- */
+.gk-slash {
+	position: absolute;
+	z-index: 0;
+	display: block;
+	height: calc(38 * var(--u));
+	transform: rotate(-26.57deg);
+	transform-origin: center;
+	pointer-events: none;
+}
+
+.gk-slash--blue {
+	background: var(--c-blue);
+}
+
+.gk-slash--navy {
+	background: var(--c-navy);
+}
+
+.gk-slash--orange {
+	background: var(--c-orange);
+}
+
+.gk-slash--white {
+	background: var(--c-white);
+}
+
+/* --------------------------------------------------------------------------
+   8. 共通パーツ：figure / table / notes
+   -------------------------------------------------------------------------- */
+.gk-figure img {
+	width: 100%;
+	/* カンプの写真はすべて 5:3 でトリミングされている */
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+.gk-figure__cap {
+	margin-top: calc(14 * var(--u));
+	font-size: calc(26 * var(--u));
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.gk-figure--r .gk-figure__cap {
+	text-align: right;
+}
+
+.gk-tablewrap {
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+.gk-table {
+	font-size: calc(26 * var(--u));
+	line-height: 1.5;
+	background: var(--c-white);
+}
+
+.gk-table th,
+.gk-table td {
+	white-space: nowrap;
+}
+
+.gk-table th,
+.gk-table td {
+	padding: calc(7 * var(--u)) calc(22 * var(--u));
+	text-align: left;
+	font-weight: 500;
+	vertical-align: middle;
+	border-right: 1px solid #d9d9d9;
+}
+
+.gk-table th:last-child,
+.gk-table td:last-child {
+	border-right: 0;
+}
+
+.gk-table thead th {
+	font-weight: 700;
+	background: var(--c-table-head);
+}
+
+.gk-table tbody tr:nth-child(even) {
+	background: var(--c-table-zebra);
+}
+
+.gk-notes {
+	font-size: calc(22 * var(--u));
+	line-height: 1.6;
+}
+
+.gk-notes li {
+	position: relative;
+	padding-left: 1.2em;
+	color: var(--c-white);
+}
+
+.gk-notes li::before {
+	content: "・";
+	position: absolute;
+	left: 0;
+}
+
+.gk-dotlist {
+	font-size: calc(28 * var(--u));
+	line-height: 1.35;
+}
+
+.gk-dotlist li {
+	position: relative;
+	margin-top: calc(24 * var(--u));
+	padding-left: 1.1em;
+}
+
+.gk-dotlist li::before {
+	content: "・";
+	position: absolute;
+	left: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. ①FV
+   -------------------------------------------------------------------------- */
+.gk-fv {
+	/* 共通ヘッダー（position: fixed）の高さ分をオフセット */
+	padding-top: var(--header-h);
+	background: var(--c-black);
+}
+
+.gk-fv__media {
+	max-width: calc(1500 * var(--u));
+	margin-inline: auto;
+}
+
+.gk-fv__img {
+	width: 100%;
+	aspect-ratio: 750 / 430;
+	object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   10. ②2nd：G-CARTの概要説明
+   -------------------------------------------------------------------------- */
+.gk-about {
+	padding-block: calc(30 * var(--u)) calc(120 * var(--u));
+	overflow: clip;
+}
+
+.gk-about > .gk-container {
+	position: relative;
+	z-index: 1;
+}
+
+.gk-about__intro {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: calc(10 * var(--u));
+	margin-left: calc(-1 * var(--gutter));
+}
+
+.gk-about__cutout {
+	flex: 0 0 auto;
+	width: calc(265 * var(--u));
+	margin-top: calc(-60 * var(--u));
+}
+
+/* ギザギザバッジ */
+.gk-badges {
+	display: flex;
+	align-items: flex-start;
+	margin-top: calc(40 * var(--u));
+	margin-right: calc(-21 * var(--u));
+}
+
+.gk-badge {
+	display: grid;
+	place-items: center;
+	width: calc(176 * var(--u));
+	height: calc(176 * var(--u));
+	color: var(--c-white);
+	font-size: calc(26 * var(--u));
+	font-weight: 700;
+	line-height: 1.35;
+	text-align: center;
+	background: var(--c-blue);
+	clip-path: polygon(
+		100% 50%, 98.1% 56.3%, 97.6% 62.9%, 94.2% 68.4%, 91.8% 74.4%, 86.6% 78.5%,
+		82.3% 83.5%, 76.1% 85.7%, 70.2% 89.2%, 63.7% 89.5%, 57.4% 91.4%, 50.9% 89.9%,
+		44.5% 91.4%, 38.2% 89.5%, 31.6% 89.2%, 25.8% 85.7%, 19.6% 83.5%, 15.2% 78.5%,
+		10.1% 74.4%, 7.6% 68.4%, 4.3% 62.9%, 3.8% 56.3%, 1.9% 50%, 3.8% 43.7%,
+		4.3% 37.1%, 7.6% 31.6%, 10.1% 25.6%, 15.2% 21.5%, 19.6% 16.5%, 25.8% 14.3%,
+		31.6% 10.8%, 38.2% 10.5%, 44.5% 8.6%, 50.9% 10.1%, 57.4% 8.6%, 63.7% 10.5%,
+		70.2% 10.8%, 76.1% 14.3%, 82.3% 16.5%, 86.6% 21.5%, 91.8% 25.6%, 94.2% 31.6%,
+		97.6% 37.1%, 98.1% 43.7%
+	);
+}
+
+.gk-badge--lg {
+	margin-left: calc(-8 * var(--u));
+}
+
+.gk-about__catch {
+	position: relative;
+	margin-top: calc(43 * var(--u));
+}
+
+.gk-about__catch .gk-h2 {
+	position: relative;
+	z-index: 1;
+}
+
+.gk-about__cutout2 {
+	position: absolute;
+	right: calc(-34 * var(--u));
+	bottom: calc(46 * var(--u));
+	z-index: 2;
+	width: calc(150 * var(--u));
+}
+
+/* 背景のコース曲線 */
+.gk-about::before {
+	content: "";
+	position: absolute;
+	top: calc(320 * var(--u));
+	right: calc(-120 * var(--u));
+	z-index: 0;
+	width: calc(520 * var(--u));
+	height: calc(900 * var(--u));
+	background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 350 500'%3E%3Cpath fill='none' stroke='%23eeeeee' stroke-width='5' stroke-linecap='round' d='M338 8c-26 4-16 30-40 34s-34-20-52-4 4 32-16 44-38-10-50 6 8 32-10 44-36-6-48 10 6 30-12 42-34-4-46 12 4 28-14 40-30 0-40 14-4 26-18 34'/%3E%3C/svg%3E");
+	pointer-events: none;
+}
+
+.gk-about .gk-lead {
+	margin-top: calc(15 * var(--u));
+}
+
+.gk-chips {
+	display: flex;
+	justify-content: center;
+	gap: calc(14 * var(--u));
+	margin-top: calc(36 * var(--u));
+}
+
+.gk-chip {
+	padding: calc(10 * var(--u)) calc(16 * var(--u));
+	color: var(--c-white);
+	font-size: calc(26 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+	white-space: nowrap;
+	background: var(--c-black);
+}
+
+.gk-about .gk-btns {
+	margin-top: calc(79 * var(--u));
+}
+
+.gk-about__gallery {
+	position: relative;
+	z-index: 1;
+	margin-top: calc(63 * var(--u));
+}
+
+.gk-about__block + .gk-about__block {
+	margin-top: calc(60 * var(--u));
+}
+
+.gk-about__block .gk-figure {
+	margin-top: calc(12 * var(--u));
+}
+
+.gk-figure--l {
+	width: calc(500 / 654 * 100%);
+	margin-right: auto;
+}
+
+.gk-figure--r {
+	width: calc(500 / 654 * 100%);
+	margin-left: auto;
+}
+
+.gk-about__block--c .gk-lead {
+	margin-top: calc(6 * var(--u));
+}
+
+/* 装飾の配置（カンプ実測値をセクション高に対する % で配置）
+   画面外に大きく逃がし、端から覗く量だけを合わせる */
+.gk-about__slash1 {
+	top: 39%;
+	right: calc(-320 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(28 * var(--u));
+}
+
+.gk-about__slash2 {
+	top: 41%;
+	right: calc(-320 * var(--u));
+	width: calc(520 * var(--u));
+	height: calc(120 * var(--u));
+}
+
+.gk-about__slash3 {
+	top: 50%;
+	right: calc(-320 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(28 * var(--u));
+}
+
+.gk-about__slash4 {
+	top: 50.5%;
+	left: calc(-330 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(64 * var(--u));
+}
+
+.gk-about__slash5 {
+	top: 70%;
+	left: calc(-330 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(36 * var(--u));
+}
+
+.gk-about__slash6 {
+	top: 74%;
+	right: calc(-330 * var(--u));
+	width: calc(500 * var(--u));
+	height: calc(110 * var(--u));
+}
+
+.gk-about__slash7 {
+	top: 87%;
+	left: calc(-350 * var(--u));
+	width: calc(420 * var(--u));
+	height: calc(110 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   11. ③G-CART搭乗条件
+   -------------------------------------------------------------------------- */
+.gk-joken__inner {
+	padding-block: calc(42 * var(--u));
+	background: var(--c-orange);
+}
+
+.gk-joken .gk-sub {
+	margin-top: 0;
+}
+
+.gk-joken .gk-figure {
+	margin-top: calc(60 * var(--u));
+}
+
+.gk-joken .gk-tablewrap {
+	margin-top: calc(56 * var(--u));
+}
+
+.gk-joken__hand {
+	margin-top: calc(50 * var(--u));
+}
+
+.gk-joken__hand .gk-body {
+	margin-top: calc(6 * var(--u));
+}
+
+.gk-joken .gk-notes {
+	margin-top: calc(46 * var(--u));
+	padding: calc(30 * var(--u)) calc(28 * var(--u));
+	background: rgba(255, 255, 255, .18);
+}
+
+/* --------------------------------------------------------------------------
+   12. ④コース説明
+   -------------------------------------------------------------------------- */
+.gk-course {
+	padding-block: calc(110 * var(--u)) calc(120 * var(--u));
+}
+
+.gk-course__map {
+	margin-top: calc(60 * var(--u));
+}
+
+.gk-course__map img {
+	width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   13. ⑤カートについて
+   -------------------------------------------------------------------------- */
+.gk-cart {
+	padding-block: calc(60 * var(--u)) calc(120 * var(--u));
+}
+
+.gk-cart__head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: calc(20 * var(--u));
+}
+
+.gk-cart__head .gk-h2 {
+	white-space: nowrap;
+}
+
+.gk-cart__img {
+	flex: 0 0 auto;
+	width: calc(180 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   14. アコーディオン（共通）
+   -------------------------------------------------------------------------- */
+.gk-acc {
+	margin-top: calc(34 * var(--u));
+}
+
+.gk-acc__head {
+	margin: 0;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.gk-acc__btn {
+	display: flex;
+	align-items: center;
+	gap: calc(16 * var(--u));
+	width: 100%;
+	min-height: calc(88 * var(--u));
+	padding: calc(14 * var(--u)) calc(24 * var(--u));
+	font-size: calc(30 * var(--u));
+	font-weight: 700;
+	line-height: 1.5;
+	text-align: left;
+	background: var(--c-white);
+	box-shadow: inset 0 0 0 1px var(--c-black);
+	transition: background-color .3s, color .3s;
+}
+
+.gk-acc__title {
+	flex: 1 1 auto;
+	text-align: center;
+}
+
+.gk-acc__icon {
+	position: relative;
+	flex: 0 0 auto;
+	width: calc(30 * var(--u));
+	height: calc(30 * var(--u));
+	transition: transform .3s var(--fade-ease);
+}
+
+.gk-acc__icon::before,
+.gk-acc__icon::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: calc(30 * var(--u));
+	height: calc(3 * var(--u));
+	background: currentColor;
+	transform: translate(-50%, -50%);
+}
+
+.gk-acc__icon::after {
+	transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.gk-acc__btn[aria-expanded="true"] .gk-acc__icon {
+	transform: rotate(45deg);
+}
+
+/* パネルの開閉は JS 有効時のみ。JS が無い環境では開いた状態で表示する */
+.gk-acc__panel {
+	overflow: hidden;
+}
+
+.gk-js .gk-acc__panel {
+	height: 0;
+	visibility: hidden;
+	transition: height .4s var(--fade-ease), visibility .4s;
+}
+
+.gk-js .gk-acc__panel.is-open {
+	visibility: visible;
+}
+
+.gk-acc__inner {
+	padding: calc(34 * var(--u)) calc(32 * var(--u)) calc(40 * var(--u));
+	background: var(--c-gray-bg);
+}
+
+/* マシンスペック */
+.gk-spec__model {
+	font-size: calc(27 * var(--u));
+	font-weight: 500;
+	line-height: 1.55;
+}
+
+.gk-spec__row {
+	display: flex;
+	gap: calc(24 * var(--u));
+	font-size: calc(27 * var(--u));
+	line-height: 1.55;
+}
+
+.gk-spec__row dt {
+	flex: 0 0 auto;
+	min-width: calc(180 * var(--u));
+	font-weight: 500;
+}
+
+/* dark（安全について） */
+.gk-acc--dark .gk-acc__btn {
+	color: var(--c-white);
+	background: var(--c-black);
+	box-shadow: none;
+}
+
+.gk-acc--dark .gk-acc__btn:hover {
+	background: #2b2b2b;
+}
+
+.gk-acc--dark .gk-acc__inner {
+	background: var(--c-white);
+}
+
+.gk-acc--dark .gk-acc__inner .gk-body {
+	font-size: calc(28 * var(--u));
+	line-height: 1.35;
+}
+
+/* black（チケット約款） */
+.gk-acc--black .gk-acc__btn {
+	color: var(--c-white);
+	background: #000;
+	box-shadow: none;
+}
+
+.gk-acc--black .gk-acc__inner {
+	background: var(--c-gray-bg);
+}
+
+/* FAQ */
+.gk-acc--faq .gk-acc__btn {
+	gap: calc(14 * var(--u));
+}
+
+.gk-acc--faq .gk-acc__title {
+	text-align: left;
+}
+
+.gk-acc__q,
+.gk-acc__a {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: calc(40 * var(--u));
+	height: calc(40 * var(--u));
+	color: var(--c-white);
+	font-family: var(--f-base);
+	font-size: calc(24 * var(--u));
+	font-weight: 700;
+	line-height: 1;
+	border-radius: 50%;
+}
+
+.gk-acc__q {
+	background: var(--c-orange);
+}
+
+.gk-acc__a {
+	display: inline-grid;
+	margin-right: calc(12 * var(--u));
+	vertical-align: calc(-6 * var(--u));
+	background: var(--c-blue);
+}
+
+.gk-faq__a {
+	font-size: calc(27 * var(--u));
+	line-height: 1.55;
+}
+
+/* --------------------------------------------------------------------------
+   15. ⑥安全について
+   -------------------------------------------------------------------------- */
+.gk-safety {
+	position: relative;
+	padding-block: calc(90 * var(--u)) calc(90 * var(--u));
+	overflow: clip;
+	background:
+		radial-gradient(120% 80% at 50% 30%, rgba(255, 255, 255, .10) 0%, rgba(0, 0, 0, 0) 60%),
+		linear-gradient(180deg, #0d1210 0%, #1c211c 32%, #10120f 62%, #0a0c0a 100%);
+}
+
+.gk-safety > .gk-container {
+	position: relative;
+	z-index: 2;
+}
+
+.gk-safety .gk-sub {
+	margin-top: calc(10 * var(--u));
+}
+
+/* 3つの丸バッジ */
+.gk-circles {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: calc(46 * var(--u));
+}
+
+.gk-circle {
+	display: grid;
+	place-items: center;
+	width: calc(190 * var(--u));
+	height: calc(190 * var(--u));
+	color: var(--c-white);
+	font-size: calc(27 * var(--u));
+	font-weight: 700;
+	line-height: 1.35;
+	text-align: center;
+	background: var(--c-blue);
+	border-radius: 50%;
+}
+
+.gk-circle--a {
+	margin-right: calc(-16 * var(--u));
+	transform: translateY(calc(36 * var(--u)));
+}
+
+.gk-circle--b {
+	z-index: 1;
+	width: calc(200 * var(--u));
+	height: calc(200 * var(--u));
+	transform: translateY(calc(-24 * var(--u)));
+}
+
+.gk-circle--c {
+	margin-left: calc(-16 * var(--u));
+	transform: translateY(calc(20 * var(--u)));
+}
+
+.gk-safety__slider {
+	position: relative;
+	z-index: 2;
+	margin-top: calc(96 * var(--u));
+}
+
+/* 素材手配待ちプレースホルダ */
+.gk-ph {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	aspect-ratio: 5 / 3;
+	color: #ff0000;
+	font-size: calc(30 * var(--u));
+	font-weight: 500;
+	background: var(--c-gray);
+}
+
+.gk-safety .gk-acc {
+	position: relative;
+	z-index: 2;
+	margin-top: calc(80 * var(--u));
+}
+
+/* 装飾の配置（カンプ実測値） */
+.gk-safety__slash1 {
+	top: 1.2%;
+	right: calc(-300 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(26 * var(--u));
+}
+
+.gk-safety__slash2 {
+	top: 2.2%;
+	right: calc(-330 * var(--u));
+	width: calc(440 * var(--u));
+	height: calc(50 * var(--u));
+}
+
+.gk-safety__slash3 {
+	top: 4.6%;
+	right: calc(-370 * var(--u));
+	width: calc(460 * var(--u));
+	height: calc(54 * var(--u));
+}
+
+.gk-safety__slash4 {
+	top: 59%;
+	right: calc(-330 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(30 * var(--u));
+}
+
+.gk-safety__slash5 {
+	top: 53%;
+	left: calc(-340 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(38 * var(--u));
+}
+
+.gk-safety__slash6 {
+	top: 62%;
+	left: calc(-320 * var(--u));
+	width: calc(420 * var(--u));
+	height: calc(90 * var(--u));
+}
+
+.gk-safety__slash7 {
+	bottom: calc(-20 * var(--u));
+	left: calc(-330 * var(--u));
+	width: calc(400 * var(--u));
+	height: calc(34 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   16. ⑦料金：CTA1
+   -------------------------------------------------------------------------- */
+.gk-charge__inner {
+	padding-block: calc(80 * var(--u)) calc(90 * var(--u));
+	background: var(--c-orange);
+}
+
+.gk-charge__sub {
+	margin-top: calc(-6 * var(--u));
+	color: var(--c-white);
+	font-size: calc(32 * var(--u));
+	font-weight: 700;
+}
+
+.gk-charge .gk-tablewrap {
+	margin-top: calc(50 * var(--u));
+}
+
+/* 3ステップ */
+.gk-steps {
+	margin-top: calc(60 * var(--u));
+}
+
+.gk-step {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: calc(24 * var(--u));
+	padding: calc(20 * var(--u)) calc(40 * var(--u));
+	color: var(--c-white);
+	background: var(--c-black);
+	transform: skewX(-10deg);
+	box-shadow: calc(10 * var(--u)) calc(10 * var(--u)) 0 rgba(0, 0, 0, .22);
+}
+
+.gk-step + .gk-step {
+	margin-top: calc(56 * var(--u));
+}
+
+.gk-step::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: calc(-44 * var(--u));
+	width: 0;
+	height: 0;
+	border-left: calc(16 * var(--u)) solid transparent;
+	border-right: calc(16 * var(--u)) solid transparent;
+	border-top: calc(18 * var(--u)) solid var(--c-white);
+	transform: translateX(-50%) skewX(10deg);
+}
+
+.gk-step__num {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: calc(46 * var(--u));
+	height: calc(46 * var(--u));
+	font-size: calc(26 * var(--u));
+	font-weight: 700;
+	line-height: 1;
+	background: var(--c-blue);
+	border-radius: 50%;
+	transform: skewX(10deg);
+}
+
+.gk-step__label {
+	font-size: calc(34 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+	transform: skewX(10deg);
+}
+
+.gk-charge__cta {
+	padding-block: calc(70 * var(--u)) calc(80 * var(--u));
+	background: var(--c-black);
+}
+
+/* --------------------------------------------------------------------------
+   17. ⑧1日の過ごし方
+   -------------------------------------------------------------------------- */
+.gk-daily {
+	padding-block: calc(110 * var(--u)) calc(120 * var(--u));
+}
+
+.gk-daily .gk-sub {
+	margin-top: calc(14 * var(--u));
+}
+
+.gk-daily__slider {
+	margin-top: calc(56 * var(--u));
+}
+
+/* 斜めバナー見出し */
+.gk-banner {
+	width: fit-content;
+	margin: calc(90 * var(--u)) auto 0;
+	padding: calc(14 * var(--u)) calc(70 * var(--u));
+	color: var(--c-white);
+	font-size: calc(36 * var(--u));
+	font-weight: 700;
+	line-height: 1.5;
+	background: var(--c-blue);
+	transform: skewX(-10deg);
+	box-shadow: calc(10 * var(--u)) calc(10 * var(--u)) 0 rgba(0, 0, 0, .2);
+}
+
+.gk-banner > span {
+	display: block;
+	transform: skewX(10deg);
+}
+
+.gk-banner--orange {
+	background: var(--c-orange);
+}
+
+/* タイムライン */
+.gk-timeline {
+	margin-top: calc(56 * var(--u));
+}
+
+.gk-tl {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: calc(34 * var(--u));
+	padding: calc(18 * var(--u)) calc(50 * var(--u));
+	color: var(--c-white);
+	background: var(--c-black);
+	transform: skewX(-10deg);
+	box-shadow: calc(10 * var(--u)) calc(10 * var(--u)) 0 rgba(0, 0, 0, .18);
+}
+
+.gk-tl + .gk-tl {
+	margin-top: calc(50 * var(--u));
+}
+
+.gk-tl:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: calc(-38 * var(--u));
+	width: 0;
+	height: 0;
+	border-left: calc(14 * var(--u)) solid transparent;
+	border-right: calc(14 * var(--u)) solid transparent;
+	border-top: calc(16 * var(--u)) solid var(--c-blue);
+	transform: translateX(-50%) skewX(10deg);
+}
+
+.gk-tl__time {
+	flex: 0 0 auto;
+	min-width: calc(96 * var(--u));
+	color: var(--c-blue);
+	font-size: calc(32 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+	transform: skewX(10deg);
+}
+
+.gk-tl__label {
+	font-size: calc(32 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+	transform: skewX(10deg);
+}
+
+.gk-daily .gk-timeline + .gk-body {
+	margin-top: calc(44 * var(--u));
+	font-weight: 700;
+}
+
+.gk-daily .gk-btns {
+	margin-top: calc(70 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   18. ⑨アクセス
+   -------------------------------------------------------------------------- */
+.gk-access__inner {
+	padding-block: calc(70 * var(--u)) calc(70 * var(--u));
+	background: var(--c-gray);
+}
+
+.gk-access .gk-banner {
+	margin-top: 0;
+}
+
+.gk-access .gk-body {
+	margin-top: calc(30 * var(--u));
+	font-weight: 700;
+}
+
+.gk-access__map {
+	margin-top: calc(46 * var(--u));
+	aspect-ratio: 750 / 460;
+	background: #e6e6e6;
+}
+
+.gk-access__map iframe {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+.gk-access__info {
+	margin-top: calc(50 * var(--u));
+	font-size: calc(28 * var(--u));
+	line-height: 1.9;
+}
+
+.gk-access__row {
+	display: flex;
+	gap: calc(16 * var(--u));
+}
+
+.gk-access__row dt {
+	flex: 0 0 auto;
+	min-width: calc(174 * var(--u));
+	font-weight: 500;
+}
+
+.gk-access__row dd {
+	font-weight: 500;
+}
+
+.gk-access .gk-btns {
+	margin-top: calc(50 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   19. ⑩FAQ
+   -------------------------------------------------------------------------- */
+.gk-faq {
+	padding-block: calc(90 * var(--u)) calc(80 * var(--u));
+}
+
+.gk-faq__list {
+	margin-top: calc(20 * var(--u));
+}
+
+.gk-faq__yakkan-ttl {
+	margin-top: calc(80 * var(--u));
+	font-size: calc(36 * var(--u));
+}
+
+.gk-faq .gk-acc--black {
+	margin-top: calc(24 * var(--u));
+}
+
+/* --------------------------------------------------------------------------
+   20. ⑪CTA2
+   -------------------------------------------------------------------------- */
+.gk-cta2 {
+	padding-top: calc(70 * var(--u));
+}
+
+.gk-cta2 .gk-h2 {
+	margin-top: calc(90 * var(--u));
+}
+
+.gk-cta2 .gk-body {
+	margin-top: calc(24 * var(--u));
+	font-weight: 700;
+}
+
+.gk-cta2 .gk-small {
+	margin-top: calc(6 * var(--u));
+}
+
+.gk-cta2 .gk-btns {
+	margin-top: calc(60 * var(--u));
+}
+
+.gk-cta2__info {
+	display: flex;
+	margin-top: calc(80 * var(--u));
+	color: var(--c-white);
+	text-align: center;
+	background: var(--c-black);
+}
+
+.gk-cta2__cell {
+	flex: 1 1 50%;
+	padding: calc(24 * var(--u)) calc(10 * var(--u)) calc(30 * var(--u));
+}
+
+.gk-cta2__cell + .gk-cta2__cell {
+	border-left: 1px solid rgba(255, 255, 255, .3);
+}
+
+.gk-cta2__cell dt {
+	font-size: calc(24 * var(--u));
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.gk-cta2__cell dd {
+	font-size: calc(44 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   21. ⑫floatingCTA
+   -------------------------------------------------------------------------- */
+.gk-floating {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 90;
+	padding: calc(26 * var(--u)) 0 calc(34 * var(--u));
+	padding-bottom: calc(calc(34 * var(--u)) + env(safe-area-inset-bottom, 0px));
+	background: linear-gradient(180deg, rgba(255, 255, 255, .30) 0%, rgba(90, 90, 90, .45) 55%, rgba(40, 40, 40, .55) 100%);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(100%);
+	transition: opacity .4s var(--fade-ease), transform .4s var(--fade-ease), visibility .4s;
+}
+
+.gk-floating.is-shown {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.gk-floating__inner {
+	display: flex;
+	justify-content: center;
+	max-width: var(--container);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+/* --------------------------------------------------------------------------
+   22. ループスライダー（右から左へ無限ループ）
+   -------------------------------------------------------------------------- */
+.gk-marquee {
+	--gap: calc(40 * var(--u));
+	--shift: 0px;
+	--speed: 24s;
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+}
+
+.gk-marquee__track {
+	display: flex;
+	gap: var(--gap);
+	width: max-content;
+	will-change: transform;
+}
+
+.gk-marquee.is-ready .gk-marquee__track {
+	animation: gk-marquee var(--speed) linear infinite;
+}
+
+@media (hover: hover) {
+
+	.gk-marquee:hover .gk-marquee__track {
+		animation-play-state: paused;
+	}
+}
+
+.gk-marquee__group {
+	display: flex;
+	gap: var(--gap);
+}
+
+.gk-marquee__item {
+	flex: 0 0 auto;
+	width: calc(650 * var(--u));
+}
+
+.gk-marquee__item img {
+	width: 100%;
+	aspect-ratio: 5 / 3;
+	object-fit: cover;
+}
+
+@keyframes gk-marquee {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		transform: translate3d(calc(-1 * var(--shift)), 0, 0);
+	}
+}
+
+/* --------------------------------------------------------------------------
+   23. スクロールフェードイン
+   -------------------------------------------------------------------------- */
+.gk-js .gk [data-gk-fade] {
+	opacity: 0;
+	transform: translate3d(0, calc(40 * var(--u)), 0);
+	transition:
+		opacity var(--fade-dur) var(--fade-ease),
+		transform var(--fade-dur) var(--fade-ease);
+	will-change: opacity, transform;
+}
+
+.gk-js .gk [data-gk-fade="left"] {
+	transform: translate3d(calc(-50 * var(--u)), 0, 0);
+}
+
+.gk-js .gk [data-gk-fade="right"] {
+	transform: translate3d(calc(50 * var(--u)), 0, 0);
+}
+
+.gk-js .gk [data-gk-fade].is-inview {
+	opacity: 1;
+	transform: translate3d(0, 0, 0);
+	will-change: auto;
+}
+
+/* --------------------------------------------------------------------------
+   24. モーション設定への配慮
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+
+	.gk-js .gk [data-gk-fade] {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+
+	.gk-check,
+	.gk-marquee.is-ready .gk-marquee__track {
+		animation: none;
+	}
+
+	.gk-floating {
+		transition: none;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   25. PC（カンプはSPのみのため、562px以上はSPレイアウトを等倍で中央寄せ）
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) {
+
+	.gk-btn:hover .gk-btn__arrow {
+		transform: translateX(calc(6 * var(--u)));
+		margin-top: calc(-26 * var(--u));
+		transition: transform .3s;
+	}
+}
