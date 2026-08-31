@@ -11,6 +11,20 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   0. テーマの overflow-x:hidden を無効化（sticky を機能させるため）
+   - content.css: html { overflow-x: hidden; }
+   - page.css   : body.g-kart { overflow-x: hidden; }
+   overflow-x が visible 以外だと overflow-y が auto に補完される仕様のため、
+   html/body が position:sticky のスクロールコンテナ扱いになり、
+   ③⑧の右カラム固定（sticky）が機能しなくなる。このLPでは横方向にはみ出す
+   要素を作らない前提のため、visible に戻して sticky を有効化する。
+   -------------------------------------------------------------------------- */
+html,
+body.g-kart {
+	overflow-x: visible !important;
+}
+
+/* --------------------------------------------------------------------------
    1. Tokens
    -------------------------------------------------------------------------- */
 .gk {
@@ -82,8 +96,9 @@
 }
 
 .gk {
+	/* overflow-x:clip も sticky を壊すため、ここでは持たせない。
+	   横方向のはみ出しは .gk-about / .gk-safety など各セクション側で個別に clip する */
 	position: relative;
-	overflow-x: clip;
 	margin: 0;
 	padding: 0;
 	color: var(--c-text);
@@ -525,37 +540,15 @@
 	overflow: clip;
 }
 
-.gk-about__head,
+/* 背景装飾（デザイン支給画像）：それぞれの要素自身の背景として持たせる */
+.gk-about__head {
+	position: relative;
+	background: no-repeat center top / 100% auto url("../images/2nd_bg01_sp.png");
+}
+
 .gk-about__gallery {
 	position: relative;
-	z-index: 1;
-}
-
-/* 背景装飾（デザイン支給画像） */
-.gk-about__bg {
-	position: absolute;
-	left: 0;
-	z-index: 0;
-	display: block;
-	width: 100%;
-	background-repeat: no-repeat;
-	background-position: center top;
-	background-size: 100% auto;
-	pointer-events: none;
-}
-
-.gk-about__bg--curve {
-	top: calc(250 * var(--u));
-	height: calc(779 * var(--u));
-	background-image: url("../images/2nd_bg01_sp.png");
-}
-
-/* 斜めスラッシュ装飾（支給画像）
-   カンプ実測：SPは ②起点から 1119、PCは 720 の位置に配置 */
-.gk-about__bg--slash {
-	top: calc(1119 * var(--u));
-	height: calc(1826 * var(--u));
-	background-image: url("../images/2nd_bg02_sp.png");
+	background: no-repeat center top / 100% auto url("../images/2nd_bg02_sp.png");
 }
 
 .gk-about__intro {
@@ -978,7 +971,7 @@
 .gk-acc__a {
 	display: inline-grid;
 	margin-right: calc(12 * var(--u));
-	vertical-align: calc(-6 * var(--u));
+	vertical-align: top;
 	background: var(--c-blue);
 }
 
@@ -1014,9 +1007,8 @@
 	background-color: var(--c-navy-deep);
 	background-image: url("../images/safety_bg_sp.jpg");
 	background-image: image-set(url("../images/safety_bg_sp.webp") type("image/webp"), url("../images/safety_bg_sp.jpg") type("image/jpeg"));
-	background-repeat: no-repeat;
 	background-position: center top;
-	background-size: 100% 100%;
+	background-size: cover;
 }
 
 .gk-safety > * {
@@ -1164,11 +1156,18 @@
 	padding-inline: var(--gutter);
 }
 
-/* 斜めバナー見出し（白地） */
+/* 斜めバナー見出し（白地・平行四辺形の枠）
+   data-gk-fade によるスクロールフェードイン（translate）が transform を使うため、
+   同じプロパティを奪い合わないよう、フェード(外側) / 傾き(中)/ 文字の打ち消し(内側)
+   の3階層に分けている */
 .gk-banner {
 	width: fit-content;
 	margin: 0 auto;
-	padding: calc(14 * var(--u)) calc(60 * var(--u));
+}
+
+.gk-banner__shape {
+	display: block;
+	padding: calc(24 * var(--u)) calc(60 * var(--u));
 	color: var(--c-text);
 	font-size: calc(36 * var(--u));
 	font-weight: 700;
@@ -1178,8 +1177,10 @@
 	box-shadow: calc(10 * var(--u)) calc(10 * var(--u)) 0 rgba(0, 0, 0, .18);
 }
 
-.gk-banner > span {
+.gk-banner__text {
 	display: block;
+	/* 親（.gk-banner__shape）の傾き(skewX)を打ち消し、文字は水平のまま表示する */
+	transform: skewX(10deg);
 }
 
 .gk-access .gk-body {
@@ -1428,7 +1429,7 @@
 	}
 
 	.gk-pc-left {
-		text-align: center;
+		text-align: left;
 	}
 
 	/* --- 2カラム（左テキスト＋右ビジュアルは画面右端まで） --- */
@@ -1483,15 +1484,11 @@
 		padding-block: 60px 120px;
 	}
 
-	.gk-about__bg--curve {
-		top: 60px;
-		height: 570px;
+	.gk-about__head {
 		background-image: url("../images/2nd_bg01_pc.png");
 	}
 
-	.gk-about__bg--slash {
-		top: 640px;
-		height: 1713px;
+	.gk-about__gallery {
 		background-image: url("../images/2nd_bg02_pc.png");
 	}
 
@@ -1680,7 +1677,7 @@
 		width: 100%;
 		max-width: calc(var(--pc-content) + 48px);
 		margin-inline: auto;
-		padding-inline: 24px;
+		padding: 0 24px 72px;
 	}
 
 	.gk-course {
@@ -1755,7 +1752,7 @@
 		padding-block: 70px 80px;
 		background-image: url("../images/safety_bg_pc.jpg");
 		background-image: image-set(url("../images/safety_bg_pc.webp") type("image/webp"), url("../images/safety_bg_pc.jpg") type("image/jpeg"));
-		background-size: 100% 100%;
+		background-size: cover;
 	}
 
 	/* PCカンプはアコーディオン→スライダーの順 */
@@ -1884,7 +1881,7 @@
 	.gk-access__map {
 		position: static;
 		margin: 0;
-		aspect-ratio: 600 / 270;
+		aspect-ratio: 600 / 360;
 	}
 
 	.gk-access .gk-btns {
