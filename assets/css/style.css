@@ -706,7 +706,7 @@
 }
 
 .gk-about__block--c .gk-lead {
-	margin-top: calc(6 * var(--u));
+	margin-top: calc(40 * var(--u));
 }
 
 /* --------------------------------------------------------------------------
@@ -1178,7 +1178,6 @@
 
 .gk-banner > span {
 	display: block;
-	transform: skewX(10deg);
 }
 
 .gk-access .gk-body {
@@ -1427,7 +1426,7 @@
 	}
 
 	.gk-pc-left {
-		text-align: left;
+		text-align: center;
 	}
 
 	/* --- 2カラム（左テキスト＋右ビジュアルは画面右端まで） --- */
@@ -1479,17 +1478,17 @@
 
 	/* --- ②2nd --- */
 	.gk-about {
-		padding-block: 40px 120px;
+		padding-block: 60px 120px;
 	}
 
 	.gk-about__bg--curve {
-		top: 170px;
+		top: 60px;
 		height: 570px;
 		background-image: url("../images/2nd_bg01_pc.png");
 	}
 
 	.gk-about__bg--slash {
-		top: 720px;
+		top: 640px;
 		height: 1713px;
 		background-image: url("../images/2nd_bg02_pc.png");
 	}
@@ -1575,6 +1574,7 @@
 
 	.gk-about__block--l {
 		grid-template-columns: 380px minmax(0, 1fr);
+		align-self: flex-start;
 	}
 
 	.gk-about__block--r {
@@ -1601,6 +1601,7 @@
 		grid-area: cap;
 		align-self: start;
 		margin-top: 8px;
+		margin-bottom: 80px;
 	}
 
 	.gk-about__block--l .gk-figure {
@@ -1610,7 +1611,7 @@
 	.gk-about__block--r .gk-about__cap {
 		order: 2;
 		margin-top: 0;
-		text-align: left;
+		text-align: center;
 	}
 
 	.gk-about__block--r .gk-figure {
@@ -1851,13 +1852,12 @@
 	}
 
 	.gk-daily__table {
-		margin-top: 30px;
-		max-width: 380px;
+		margin: 40px auto 0;
+		max-width: 320px;
 	}
 
 	.gk-daily .gk-btns {
-		align-items: flex-start;
-		margin-top: 30px;
+		margin: 40px auto 0;
 	}
 
 	/* --- ⑨アクセス --- */
