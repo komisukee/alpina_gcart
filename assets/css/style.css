@@ -899,19 +899,26 @@
 	font-size: calc(27 * var(--u));
 	font-weight: 500;
 	line-height: 1.55;
+	line-height: 1.8;
 }
 
 .gk-spec__row {
 	display: flex;
-	gap: calc(24 * var(--u));
-	font-size: calc(27 * var(--u));
+	gap: calc(12 * var(--u));
 	line-height: 1.55;
 }
 
 .gk-spec__row dt {
 	flex: 0 0 auto;
-	min-width: calc(180 * var(--u));
+	width: 35%;
 	font-weight: 500;
+	font-size: calc(27 * var(--u));
+	line-height: 1.8;
+}
+
+.gk-spec__row dd {
+	font-size: calc(27 * var(--u));
+	line-height: 1.8;
 }
 
 /* dark（安全について） */
@@ -927,6 +934,7 @@
 
 .gk-acc--dark .gk-acc__inner {
 	background: var(--c-white);
+	color: #000;
 }
 
 /* navy（チケット約款） */
@@ -1660,7 +1668,6 @@
 	/* --- ④⑤ コース＋カート：右に全景写真を固定 --- */
 	.gk-coursecart {
 		display: grid;
-		grid-template-columns: var(--pc-col) minmax(0, 1fr);
 		grid-template-areas:
 			"course photo"
 			"cart photo";
@@ -1713,10 +1720,30 @@
 		width: 150px;
 	}
 
+	.gk-spec__wrapper {
+		display: flex;
+	}
+
 	.gk-spec {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		column-gap: 24px;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		column-gap: 12px;
+	}
+
+	.gk-spec__model {
+		font-size: calc(20 * var(--u));
+	}
+
+
+	.gk-spec dt {
+		width: inherit;
+		font-size: calc(20 * var(--u));
+	}
+
+	.gk-spec dd {
+		width: inherit;
+		font-size: calc(20 * var(--u));
 	}
 
 	/* --- ⑥安全について --- */
