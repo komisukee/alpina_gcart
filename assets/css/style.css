@@ -23,9 +23,10 @@
 	--c-blue-check: #1975ad;
 	--c-navy: #0b3c5d;
 	--c-navy-deep: #12405b;
-	--c-orange: #e8842c;
+	--c-orange: #ff931e;
 	--c-orange-check: #e57a27;
 	--c-orange-pale: #e89851;
+	--c-orange-bg: #e8842c;
 	--c-cta: #ff6900;
 	--c-cta-dark: #b93c00;
 	--c-brown: #663a13;
@@ -568,12 +569,12 @@
 .gk-about__cutout {
 	flex: 0 0 auto;
 	width: calc(265 * var(--u));
-	margin-top: calc(-60 * var(--u));
 }
 
 /* ギザギザバッジ */
 .gk-badges {
 	display: flex;
+	gap: 0.75rem;
 	align-items: flex-start;
 	margin-top: calc(40 * var(--u));
 	margin-right: calc(-21 * var(--u));
@@ -635,7 +636,6 @@
 
 .gk-about__catch {
 	position: relative;
-	margin-top: calc(43 * var(--u));
 }
 
 .gk-about__catch .gk-h2 {
@@ -645,14 +645,15 @@
 
 .gk-about__cutout2 {
 	position: absolute;
-	right: 0;
-	bottom: 0;
+	right: -20px;
+	bottom: -30px;
 	z-index: 2;
 	width: calc(130 * var(--u));
 }
 
 .gk-about .gk-lead {
-	margin-top: calc(15 * var(--u));
+	line-height: 1.8;
+	margin-top: calc(20 * var(--u));
 }
 
 .gk-chips {
@@ -685,7 +686,7 @@
 }
 
 .gk-about__block .gk-figure {
-	margin-top: calc(12 * var(--u));
+	margin-top: calc(32 * var(--u));
 }
 
 .gk-about__cap {
@@ -726,7 +727,6 @@
 
 .gk-joken .gk-sub {
 	margin-top: 0;
-	font-weight: bold;
 }
 
 .gk-joken__photo {
@@ -1097,7 +1097,7 @@
 
 .gk-charge__steps img {
 	width: 100%;
-	max-width: 400px;
+	max-width: 300px;
 	margin: auto;
 }
 
@@ -1135,11 +1135,13 @@
 }
 
 .gk-daily__table {
-	margin-top: calc(90 * var(--u));
+	margin: calc(90 * var(--u)) auto 0;
+	max-width: 300px;
 }
 
 .gk-daily__table img {
 	width: 100%;
+	margin: auto;
 }
 
 .gk-daily .gk-btns {
@@ -1502,7 +1504,7 @@
 	.gk-about__cutout {
 		position: absolute;
 		left: 0;
-		top: 40px;
+		top: 0;
 		width: 230px;
 		margin-top: 0;
 	}
@@ -1788,7 +1790,7 @@
 	.gk-circle {
 		width: 199px;
 		height: 199px;
-		font-size: 20px;
+		font-size: 28px;
 	}
 
 	.gk-circle + .gk-circle {
@@ -1801,7 +1803,7 @@
 
 	/* --- ⑦料金 --- */
 	.gk-charge__inner {
-		padding-block: 70px 50px;
+		padding: 70px 50px 20px;
 	}
 
 	.gk-charge .gk-tablewrap,
@@ -1812,6 +1814,10 @@
 
 	.gk-charge__steps {
 		margin-top: 30px;
+	}
+
+	.gk-charge__steps img {
+		max-width: 400px;
 	}
 
 	.gk-charge__cta {
@@ -1853,7 +1859,7 @@
 
 	.gk-daily__table {
 		margin: 40px auto 0;
-		max-width: 320px;
+		max-width: 400px;
 	}
 
 	.gk-daily .gk-btns {
