@@ -211,7 +211,30 @@
 	}
 
 	/* ----------------------------------------------------------------------
-	 * 5. 追従CTA（FVを通過したら表示）
+	 * 5. フェード切替スライドショー（PCの「1日の過ごし方」右カラム）
+	 * -------------------------------------------------------------------- */
+	function initFadeShow() {
+		var shows = root.querySelectorAll('[data-gk-fadeshow]');
+
+		Array.prototype.forEach.call(shows, function (el) {
+			var items = el.querySelectorAll('picture');
+			if (items.length < 2) return;
+
+			var i = 0;
+			items[0].classList.add('is-active');
+
+			setInterval(function () {
+				// 非表示（SP）のときは進めない
+				if (!el.offsetParent) return;
+				items[i].classList.remove('is-active');
+				i = (i + 1) % items.length;
+				items[i].classList.add('is-active');
+			}, 4000);
+		});
+	}
+
+	/* ----------------------------------------------------------------------
+	 * 6. 追従CTA（FVを通過したら表示）
 	 * -------------------------------------------------------------------- */
 	function initFloatingCta() {
 		var floating = root.querySelector('[data-gk-floating]');
@@ -236,6 +259,7 @@
 		initFadeIn();
 		initAccordion();
 		initMarquee();
+		initFadeShow();
 		initFloatingCta();
 	}
 
