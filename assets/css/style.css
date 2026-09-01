@@ -1515,11 +1515,28 @@ body.g-kart {
 		padding-block: 60px 120px;
 	}
 
-	/* PCはカンプ実寸(1280px)に固定し、viewport幅が変わっても
-	   本文列（--pc-content基準の中央寄せ）と同じ位置関係を保つ */
+	/* 背景はウィンドウ幅いっぱいに表示する。
+	   .gk-about__head/.gk-about__gallery（背景の基準になる要素）は
+	   .gk-container を持たない全幅ラッパーに変更したため、
+	   width:100% で常にウィンドウ幅と一致し、ズレが起きない。 */
 	.gk-about__head::before,
 	.gk-about__gallery::before {
-		width: 1280px;
+		width: 100%;
+	}
+
+	/* 本文もウィンドウ幅に追従させる。
+	   背景（width:100%）は常にウィンドウ幅で伸縮するのに対し、
+	   本文を .gk-container の固定幅（〜1128px 中央寄せ）のままにすると、
+	   ウィンドウが 1128px を超えた時点から本文だけ幅が止まり、
+	   全幅の背景との横位置がズレていく。
+	   カンプ（1280px幅・本文1080px＝左右マージン各100px）の比率に合わせ、
+	   左右パディングを 100/1280 = 7.8125% として本文幅も
+	   ウィンドウ幅に比例させることで、背景とのズレをなくす。
+	   ％は基準要素（全幅ラッパー）の width 基準なので背景の 100% と一致する */
+	.gk-about__head-inner,
+	.gk-about__gallery-inner {
+		max-width: none;
+		padding-inline: 7.8125%;
 	}
 
 	.gk-about__head::before {
@@ -1615,12 +1632,12 @@ body.g-kart {
 	}
 
 	.gk-about__block--l {
-		grid-template-columns: 380px minmax(0, 1fr);
+		grid-template-columns: 500px minmax(0, 1fr);
 		align-self: flex-start;
 	}
 
 	.gk-about__block--r {
-		grid-template-columns: minmax(0, 1fr) 380px;
+		grid-template-columns: minmax(0, 1fr) 500px;
 	}
 
 	.gk-about__block + .gk-about__block {
@@ -1673,7 +1690,7 @@ body.g-kart {
 	}
 
 	.gk-about__block--c .gk-figure {
-		width: 828px;
+		width: 900px;
 		margin: 24px auto 0;
 	}
 
