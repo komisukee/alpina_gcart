@@ -544,7 +544,11 @@ body.g-kart {
    .gk-about__head/.gk-about__gallery は .gk-container で幅が制限されているため、
    直接 background を持たせると画像も同じ幅に縮小されてしまう。
    デザインカンプどおり原寸（＝セクション全幅）で見せるため、
-   ::before を画面幅いっぱいに広げてその中に背景として敷く */
+   ::before を画面幅いっぱいに広げてその中に背景として敷く。
+   幅は 100vw ではなく --container と同じ calc(750 * var(--u)) にする。
+   100vw だと var(--u) が 0.75px で頭打ちになった後（viewport 562.5px 超）も
+   ウィンドウ幅に応じて背景だけ伸び縮みし、幅が固定された本文列との間で
+   横位置がずれてしまうため、本文と同じスケール式に揃えて追従させる */
 .gk-about__head,
 .gk-about__gallery {
 	position: relative;
@@ -558,9 +562,9 @@ body.g-kart {
 	top: 0;
 	left: 50%;
 	z-index: -1;
-	width: 100vw;
+	width: calc(750 * var(--u));
 	/* content:"" のみの疑似要素は自身の高さを持たないため、
-	   画像自体の縦横比から高さを決める（100vw幅で原寸表示） */
+	   画像自体の縦横比から高さを決める（原寸表示） */
 	background-repeat: no-repeat;
 	background-position: center top;
 	background-size: contain;
@@ -1511,17 +1515,24 @@ body.g-kart {
 		padding-block: 60px 120px;
 	}
 
+	/* PCはカンプ実寸(1280px)に固定し、viewport幅が変わっても
+	   本文列（--pc-content基準の中央寄せ）と同じ位置関係を保つ */
+	.gk-about__head::before,
+	.gk-about__gallery::before {
+		width: 1280px;
+	}
+
 	.gk-about__head::before {
 		aspect-ratio: 3840 / 1710;
 		background-image: url("../images/2nd_bg01_pc.png");
-		background-size: 1700px auto;
+		background-size: 100% auto;
 	}
 
 	.gk-about__gallery::before {
 		aspect-ratio: 3840 / 5139;
 		background-image: url("../images/2nd_bg02_pc.png");
-		background-size: 1700px auto;
-		top: -20px;
+		background-size: 100% auto;
+		top: -60px;
 	}
 
 	.gk-about__intro {
