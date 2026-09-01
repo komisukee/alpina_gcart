@@ -254,10 +254,10 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             </figure>
                         </div>
 
-                        <p class="gk-lead gk-center" data-gk-fade>標高約1,700mの山頂から、<br>動力を持たないカートで一気に駆けおりる。</p>
+                        <p class="gk-lead gk-center" data-gk-fade>標高約1,700mの山頂から、<br>動力を持たないカートで一気に駆けおりる。<br>ハンドルとブレーキでG-KART(ジーカート)を自由自在にコントロール</p>
 
                         <ul class="gk-chips" data-gk-fade>
-                            <li class="gk-chip">約1,700m</li>
+                            <li class="gk-chip">約800mが2コース</li>
                             <li class="gk-chip">約30km/h</li>
                             <li class="gk-chip">リフト券込み</li>
                         </ul>
@@ -267,7 +267,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 <span class="gk-btn__label">前売券を購入する</span>
                                 <span class="gk-btn__arrow" aria-hidden="true"></span>
                             </a>
-                            <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/green/hours_fare/">
+                            <a class="gk-btn gk-btn--outline" href="#charge">
                                 <span class="gk-btn__label">料金・営業時間を見る</span>
                                 <span class="gk-btn__arrow" aria-hidden="true"></span>
                             </a>
@@ -324,15 +324,16 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 <div class="gk-tablewrap" data-gk-fade>
                                     <table class="gk-table">
                                         <thead>
-                                            <tr><th scope="col">年齢</th><th scope="col">乗り方</th><th scope="col">料金</th></tr>
+                                            <tr><th scope="col">年齢</th><th scope="col">乗り方</th><th scope="col">購入券種</th></tr>
                                         </thead>
                                         <tbody>
-                                            <tr><th scope="row">3歳〜未就学児</th><td>同乗</td><td>3,200円</td></tr>
-                                            <tr><th scope="row">小学1・2年生</th><td>同乗</td><td>3,400円</td></tr>
-                                            <tr><th scope="row">小学3年生〜</th><td>ひとりで</td><td>4,400円〜</td></tr>
-                                            <tr><th scope="row">中学生〜大人</th><td>ひとりで</td><td>5,000円〜</td></tr>
+                                            <tr><th scope="row">3歳〜未就学児</th><td>保護者と同乗</td><td>タンデム(3歳以上〜)</td></tr>
+                                            <tr><th scope="row">小学1・2年生</th><td>保護者と同乗</td><td>タンデム(小学1年生〜2年生)</td></tr>
+                                            <tr><th scope="row">小学3年生〜</th><td>ひとり乗車</td><td>G-KART乗車券、3回乗車券、5回乗車券</td></tr>
+                                            <tr><th scope="row">中学生〜大人</th><td>ひとり乗車</td><td>G-KART乗車券、3回乗車券、5回乗車券</td></tr>
                                         </tbody>
                                     </table>
+                                    <p class="gk-small gk-body--white gk-table__note">※タンデム券1枚で同乗する保護者の回数分乗車できます。</p>
                                 </div>
 
                                 <div class="gk-joken__hand" data-gk-fade>
@@ -341,7 +342,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 </div>
 
                                 <ul class="gk-notes" data-gk-fade>
-                                    <li>乗車条件は小学3年生以上、身長120cm以上両方満たす必要があります。</li>
+                                    <li>ひとり乗車条件は小学3年生以上、身長110～120cm以上両方満たす必要があります。</li>
                                     <li>子ども同士での同乗は、安全上お受けできません</li>
                                     <li>同乗のお子様にも、タンデム券が必要です</li>
                                     <li>初めての方は必ずビギナーコースから</li>
@@ -378,7 +379,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                     <div id="cart" class="gk-sec gk-cart">
                         <div class="gk-container">
                             <div class="gk-cart__head">
-                                <h2 class="gk-h2" data-gk-fade>カートについて</h2>
+                                <h2 class="gk-h2" data-gk-fade>G-KART(ジーカート)について</h2>
                                 <figure class="gk-cart__img" data-gk-fade="right" aria-hidden="true">
                                     <picture><source type="image/webp" srcset="assets/images/cart.webp"><img src="assets/images/cart.png" alt="" width="280" height="238" loading="lazy" decoding="async"></picture>
                                 </figure>
@@ -484,22 +485,37 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             <p class="gk-charge__sub gk-center" data-gk-fade>（すべてリフト券込み）</p>
 
                             <div class="gk-tablewrap" data-gk-fade>
-                                <table class="gk-table gk-table--4">
+                                <table class="gk-table gk-table--charge">
                                     <thead>
-                                        <tr><th scope="col">券種</th><th scope="col">大人</th><th scope="col">子供</th><th scope="col">前売り</th></tr>
+                                        <tr>
+                                            <th scope="col" rowspan="2">券種</th>
+                                            <th scope="colgroup" colspan="3">当日窓口購入</th>
+                                            <th scope="col">前日までに購入</th>
+                                        </tr>
+                                        <tr>
+                                            <th scope="col">G-KART乗車券</th>
+                                            <th scope="col">3回乗車券</th>
+                                            <th scope="col">5回乗車券</th>
+                                            <th scope="col">前売券</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><th scope="row">乗車券</th><td>5,000円</td><td>4,400円</td><td>-</td></tr>
-                                        <tr><th scope="row">3回乗車</th><td>6,000円</td><td>5,400円</td><td>5,000円〜</td></tr>
-                                        <tr><th scope="row">5回乗車</th><td>7,000円</td><td>6,400円</td><td>5,800円〜</td></tr>
-                                        <tr><th scope="row">タンデム</th><td>3,400円</td><td>3,200円</td><td>3,300円〜</td></tr>
+                                        <tr><th scope="row">大人</th><td>5,000円</td><td>6,000円</td><td>7,000円</td><td>5,000円〜</td></tr>
+                                        <tr><th scope="row">子供</th><td>4,400円</td><td>5,400円</td><td>6,400円</td><td>5,800円〜</td></tr>
+                                        <tr><th scope="row" class="gk-table__sub">タンデム(小学1年生〜2年生)</th><td colspan="3" class="gk-table__merge">3,400円</td><td>2,700円〜</td></tr>
+                                        <tr><th scope="row" class="gk-table__sub">タンデム(3歳以上〜)</th><td colspan="3" class="gk-table__merge">3,200円</td><td>2,500円〜</td></tr>
                                     </tbody>
                                 </table>
                             </div>
 
                             <figure class="gk-charge__steps" data-gk-fade>
-                                <picture><source type="image/webp" srcset="assets/images/charge_table.webp"><img src="assets/images/charge_table.png" alt="前売券のご利用は3ステップ。1 前日までに購入、2 専用レーンで引換、3 そのまま搭乗。" width="1489" height="1048" loading="lazy" decoding="async"></picture>
+                                <picture><source type="image/webp" srcset="assets/images/purchase_flow.webp"><img src="assets/images/purchase_flow.png" alt="購入からの流れ。当日窓口購入の場合は、1 当日窓口で並びG-KART乗車券購入、2 フラワーリフト乗り場へ。前売券の場合は、1 前日までに購入でお得（前日までキャンセル可）、2 引換優先レーンで引き換え、3 フラワーリフト乗り場へ。" width="2800" height="1760" loading="lazy" decoding="async"></picture>
                             </figure>
+
+                            <dl class="gk-charge__hours" data-gk-fade>
+                                <div class="gk-charge__hours-row"><dt>営業期間</dt><dd>2026年4月29日(水・祝)〜11月3日(火・祝)</dd></div>
+                                <div class="gk-charge__hours-row"><dt>営業時間</dt><dd>9:30〜17:00<span class="gk-charge__hours-note">（G-KART最終受付16:00）</span></dd></div>
+                            </dl>
                         </div>
                     </div>
 
@@ -573,9 +589,12 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 <p class="gk-body gk-body--white gk-center gk-pc-left" data-gk-fade>中央道でまっすぐ。ICを降りてからも、20〜30分です。</p>
 
                                 <dl class="gk-access__info" data-gk-fade>
+                                    <div class="gk-access__row"><dt>施設名</dt><dd>サンメドウズ清里</dd></div>
                                     <div class="gk-access__row"><dt>所在地</dt><dd>山梨県北杜市大泉町西井出8240-1</dd></div>
                                     <div class="gk-access__row"><dt>お問い合わせ</dt><dd><a href="tel:0551484111">0551-48-4111</a></dd></div>
                                 </dl>
+
+                                <p class="gk-small gk-body--white gk-access__navi" data-gk-fade>カーナビ検索は電話番号「0551-48-4111」または名称「サンメドウズ清里スキー場」「サンメドウズ清里ハイランドパーク」で検索してください。<br>※住所検索をすると別の場所を指してしまう場合があります。</p>
 
                                 <div class="gk-btns" data-gk-fade>
                                     <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/access/">
@@ -586,7 +605,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             </div>
 
                             <div class="gk-access__map" data-gk-fade="up">
-                                <iframe src="https://maps.google.com/maps?q=%E5%B1%B1%E6%A2%A8%E7%9C%8C%E5%8C%97%E6%9D%9C%E5%B8%82%E5%A4%A7%E6%B3%89%E7%94%BA%E8%A5%BF%E4%BA%95%E5%87%BA8240-1&amp;z=14&amp;output=embed" title="サンメドウズ清里スキー場 周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://maps.google.com/maps?q=35.94742748205961,138.41593279126675&amp;z=15&amp;output=embed" title="サンメドウズ清里 周辺地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>
@@ -678,12 +697,10 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             </div>
                         </div>
 
-                        <h3 class="gk-h3 gk-center gk-faq__yakkan-ttl" data-gk-fade>チケット約款</h3>
-
                         <div class="gk-acc gk-acc--navy" data-gk-fade>
                             <h4 class="gk-acc__head">
                                 <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-acc-yakkan">
-                                    <span class="gk-acc__title">チケット約款はこちら</span>
+                                    <span class="gk-acc__title">チケットについて</span>
                                     <span class="gk-acc__icon" aria-hidden="true"></span>
                                 </button>
                             </h4>
@@ -716,9 +733,8 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                     </div>
 
                     <div class="gk-container">
-                        <h2 class="gk-h2 gk-center" data-gk-fade>前日までの購入で、<br>当日はそのまま。</h2>
-                        <p class="gk-body gk-center" data-gk-fade>窓口に並ばず、専用レーンで引き換えて、すぐに受付へ。</p>
-                        <p class="gk-small gk-center" data-gk-fade>※ 引き換えは専用レーンで。</p>
+                        <h2 class="gk-h2 gk-center" data-gk-fade>前売券は引き換えがスムーズ。</h2>
+                        <p class="gk-body gk-center" data-gk-fade>チケット売場には前売券引換レーンと当日購入レーンがあり<br>前売券引き換えがスムーズ。</p>
 
                         <div class="gk-btns" data-gk-fade>
                             <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
@@ -729,7 +745,6 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                     </div>
 
                     <dl class="gk-cta2__info">
-                        <div class="gk-cta2__cell"><dt>営業時間</dt><dd>9:30〜17:00</dd></div>
                         <div class="gk-cta2__cell"><dt>お問い合わせ</dt><dd><a href="tel:0551484111">0551-48-4111</a></dd></div>
                     </dl>
                 </div>
