@@ -540,15 +540,42 @@ body.g-kart {
 	overflow: clip;
 }
 
-/* 背景装飾（デザイン支給画像）：それぞれの要素自身の背景として持たせる */
-.gk-about__head {
-	position: relative;
-	background: no-repeat center top / 100% auto url("../images/2nd_bg01_sp.png");
-}
-
+/* 背景装飾（デザイン支給画像）
+   .gk-about__head/.gk-about__gallery は .gk-container で幅が制限されているため、
+   直接 background を持たせると画像も同じ幅に縮小されてしまう。
+   デザインカンプどおり原寸（＝セクション全幅）で見せるため、
+   ::before を画面幅いっぱいに広げてその中に背景として敷く */
+.gk-about__head,
 .gk-about__gallery {
 	position: relative;
-	background: no-repeat center top / 100% auto url("../images/2nd_bg02_sp.png");
+	z-index: 0;
+}
+
+.gk-about__head::before,
+.gk-about__gallery::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	z-index: -1;
+	width: 100vw;
+	/* content:"" のみの疑似要素は自身の高さを持たないため、
+	   画像自体の縦横比から高さを決める（100vw幅で原寸表示） */
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: 100% auto;
+	transform: translateX(-50%);
+	pointer-events: none;
+}
+
+.gk-about__head::before {
+	aspect-ratio: 2250 / 2337;
+	background-image: url("../images/2nd_bg01_sp.png");
+}
+
+.gk-about__gallery::before {
+	aspect-ratio: 2250 / 5479;
+	background-image: url("../images/2nd_bg02_sp.png");
 }
 
 .gk-about__intro {
@@ -1484,12 +1511,15 @@ body.g-kart {
 		padding-block: 60px 120px;
 	}
 
-	.gk-about__head {
+	.gk-about__head::before {
+		aspect-ratio: 3840 / 1710;
 		background-image: url("../images/2nd_bg01_pc.png");
 	}
 
-	.gk-about__gallery {
+	.gk-about__gallery::before {
+		aspect-ratio: 3840 / 5139;
 		background-image: url("../images/2nd_bg02_pc.png");
+		top: -5%;
 	}
 
 	.gk-about__intro {
