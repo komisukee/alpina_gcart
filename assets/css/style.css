@@ -563,7 +563,7 @@ body.g-kart {
 	   画像自体の縦横比から高さを決める（100vw幅で原寸表示） */
 	background-repeat: no-repeat;
 	background-position: center top;
-	background-size: 100% auto;
+	background-size: contain;
 	transform: translateX(-50%);
 	pointer-events: none;
 }
@@ -1514,12 +1514,14 @@ body.g-kart {
 	.gk-about__head::before {
 		aspect-ratio: 3840 / 1710;
 		background-image: url("../images/2nd_bg01_pc.png");
+		background-size: 1700px auto;
 	}
 
 	.gk-about__gallery::before {
 		aspect-ratio: 3840 / 5139;
 		background-image: url("../images/2nd_bg02_pc.png");
-		top: -5%;
+		background-size: 1700px auto;
+		top: -20px;
 	}
 
 	.gk-about__intro {
