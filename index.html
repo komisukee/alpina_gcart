@@ -29,7 +29,7 @@
 	<link rel="stylesheet" href="https://unpkg.com/scroll-hint@latest/css/scroll-hint.css">
 	<link rel="stylesheet" href="https://www.sunmeadows.co.jp/wp/wp-content/themes/original/style.css?250829v2">
 	<!-- G-KART LP -->
-	<link rel="stylesheet" href="assets/css/style.css?v=20260831z">
+	<link rel="stylesheet" href="assets/css/style.css?v=20260901a">
 	<script>document.documentElement.classList.add('gk-js');</script>
 	<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 	<meta name='robots' content='max-image-preview:large' />
@@ -379,7 +379,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                     <div id="cart" class="gk-sec gk-cart">
                         <div class="gk-container">
                             <div class="gk-cart__head">
-                                <h2 class="gk-h2" data-gk-fade>G-KART(ジーカート)について</h2>
+                                <h2 class="gk-h2 gk-cart__title" data-gk-fade><ruby class="gk-cart__ruby">G-KART<rt>ジーカート</rt></ruby><span class="gk-cart__title-tail">について</span></h2>
                                 <figure class="gk-cart__img" data-gk-fade="right" aria-hidden="true">
                                     <picture><source type="image/webp" srcset="assets/images/cart.webp"><img src="assets/images/cart.png" alt="" width="280" height="238" loading="lazy" decoding="async"></picture>
                                 </figure>
@@ -508,27 +508,42 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 </table>
                             </div>
 
-                            <figure class="gk-charge__steps" data-gk-fade>
-                                <picture><source type="image/webp" srcset="assets/images/purchase_flow.webp"><img src="assets/images/purchase_flow.png" alt="購入からの流れ。当日窓口購入の場合は、1 当日窓口で並びG-KART乗車券購入、2 フラワーリフト乗り場へ。前売券の場合は、1 前日までに購入でお得（前日までキャンセル可）、2 引換優先レーンで引き換え、3 フラワーリフト乗り場へ。" width="2800" height="1760" loading="lazy" decoding="async"></picture>
-                            </figure>
-
                             <dl class="gk-charge__hours" data-gk-fade>
                                 <div class="gk-charge__hours-row"><dt>営業期間</dt><dd>2026年4月29日(水・祝)〜11月3日(火・祝)</dd></div>
                                 <div class="gk-charge__hours-row"><dt>営業時間</dt><dd>9:30〜17:00<span class="gk-charge__hours-note">（G-KART最終受付16:00）</span></dd></div>
                             </dl>
-                        </div>
-                    </div>
 
-                    <div class="gk-charge__cta">
-                        <div class="gk-container">
-                            <div class="gk-btns" data-gk-fade>
-                                <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
-                                    <span class="gk-btn__label">前売券を購入する</span>
-                                    <span class="gk-btn__arrow" aria-hidden="true"></span>
-                                </a>
+                            <div class="gk-flow" data-gk-tabs data-gk-fade>
+                                <div class="gk-flow__tabs" role="tablist" aria-label="購入方法の流れ">
+                                    <button class="gk-flow__tab is-active" id="gk-flow-tab-advance" type="button" role="tab" aria-selected="true" aria-controls="gk-flow-panel-advance">前売券の場合</button>
+                                    <button class="gk-flow__tab" id="gk-flow-tab-sameday" type="button" role="tab" aria-selected="false" aria-controls="gk-flow-panel-sameday" tabindex="-1">当日窓口購入の場合</button>
+                                </div>
+
+                                <div class="gk-flow__panel is-active" id="gk-flow-panel-advance" role="tabpanel" aria-labelledby="gk-flow-tab-advance">
+                                    <ol class="gk-flow__steps">
+                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">前日までに購入でお得</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">引換優先レーンで引き換え</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">3</span><span class="gk-flow__label">フラワーリフト乗り場へ</span></li>
+                                    </ol>
+                                    <div class="gk-flow__btns">
+                                        <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
+                                            <span class="gk-btn__label">前売券を購入する</span>
+                                            <span class="gk-btn__arrow" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="gk-flow__panel" id="gk-flow-panel-sameday" role="tabpanel" aria-labelledby="gk-flow-tab-sameday" hidden>
+                                    <ol class="gk-flow__steps">
+                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">当日窓口で並びG-KART乗車券を購入</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">フラワーリフト乗り場へ</span></li>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="gk-check gk-check--orange" aria-hidden="true"></div>
                 </div>
 
                 <!-- =========================================================
@@ -588,16 +603,20 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                 <p class="gk-banner" data-gk-fade><span class="gk-banner__shape"><span class="gk-banner__text">首都圏から、車で約2時間。</span></span></p>
                                 <p class="gk-body gk-body--white gk-center gk-pc-left" data-gk-fade>中央道でまっすぐ。ICを降りてからも、20〜30分です。</p>
 
+                                <p class="gk-access__name" data-gk-fade>サンメドウズ清里</p>
+
                                 <dl class="gk-access__info" data-gk-fade>
-                                    <div class="gk-access__row"><dt>施設名</dt><dd>サンメドウズ清里</dd></div>
                                     <div class="gk-access__row"><dt>所在地</dt><dd>山梨県北杜市大泉町西井出8240-1</dd></div>
                                     <div class="gk-access__row"><dt>お問い合わせ</dt><dd><a href="tel:0551484111">0551-48-4111</a></dd></div>
                                 </dl>
 
-                                <p class="gk-small gk-body--white gk-access__navi" data-gk-fade>カーナビ検索は電話番号「0551-48-4111」または名称「サンメドウズ清里スキー場」「サンメドウズ清里ハイランドパーク」で検索してください。<br>※住所検索をすると別の場所を指してしまう場合があります。</p>
+                                <div class="gk-access__note" data-gk-fade>
+                                    <p class="gk-small">※住所検索をすると別の場所を指してしまう場合があります。</p>
+                                    <p class="gk-small">カーナビ検索は電話番号「0551-48-4111」または名称「サンメドウズ清里スキー場」「サンメドウズ清里ハイランドパーク」で検索してください。</p>
+                                </div>
 
                                 <div class="gk-btns" data-gk-fade>
-                                    <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/access/">
+                                    <a class="gk-btn gk-btn--black" href="https://www.sunmeadows.co.jp/access/">
                                         <span class="gk-btn__label">詳しいアクセス情報を見る</span>
                                         <span class="gk-btn__arrow" aria-hidden="true"></span>
                                     </a>
@@ -934,6 +953,6 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 	</script>
 	<script src="https://www.sunmeadows.co.jp/wp/wp-content/plugins/gtranslate/js/base.js?ver=3.1.1" data-no-optimize="1" data-no-minify="1" data-gt-orig-url="/green/g-kart/" data-gt-orig-domain="www.sunmeadows.co.jp" data-gt-widget-id="29903483" defer></script>
 	<!-- G-KART LP -->
-	<script src="assets/js/script.js?v=20260831z" defer></script>
+	<script src="assets/js/script.js?v=20260901a" defer></script>
 </body>
 </html>

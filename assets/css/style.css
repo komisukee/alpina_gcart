@@ -44,6 +44,8 @@ body.g-kart {
 	--c-cta: #ff6900;
 	--c-cta-dark: #b93c00;
 	--c-brown: #663a13;
+	--c-flow-red: #d0331d;
+	--c-flow-tab: #c67d34;
 	--c-yellow: #ffff64;
 	--c-text: #1a1a1a;
 	--c-gray-bg: #f0f0f0;
@@ -361,6 +363,22 @@ body.g-kart {
 }
 
 .gk-btn--outline:hover .gk-btn__arrow {
+	color: #000;
+	background: var(--c-white);
+}
+
+/* black：黒地・白文字（アクセス） */
+.gk-btn--black {
+	color: var(--c-white);
+	background-color: #000;
+	box-shadow: inset 0 0 0 calc(5 * var(--u)) #000;
+}
+
+.gk-btn--black:hover {
+	background-color: #1f1f1f;
+}
+
+.gk-btn--black .gk-btn__arrow {
 	color: #000;
 	background: var(--c-white);
 }
@@ -843,6 +861,24 @@ body.g-kart {
 	white-space: nowrap;
 }
 
+/* 「G-KART について」：G-KART にジーカートのルビを振る */
+.gk-cart__ruby {
+	ruby-position: over;
+	-webkit-ruby-position: before;
+}
+
+.gk-cart__ruby > rt {
+	font-size: calc(22 * var(--u));
+	font-weight: 700;
+	letter-spacing: .18em;
+	text-align: center;
+	transform: translateY(calc(6 * var(--u)));
+}
+
+.gk-cart__title-tail {
+	color: var(--c-text);
+}
+
 .gk-cart__img {
 	flex: 0 0 auto;
 	width: calc(180 * var(--u));
@@ -1126,51 +1162,160 @@ body.g-kart {
 	margin-top: calc(50 * var(--u));
 }
 
-.gk-charge__steps {
-	margin-top: calc(56 * var(--u));
-}
-
-.gk-charge__steps img {
-	width: 100%;
-	max-width: 100%;
-	margin: auto;
-}
-
+/* 営業期間・営業時間：表の直下（背景なし・小さめ・中央寄せ） */
 .gk-charge__hours {
-	margin-top: calc(50 * var(--u));
-	padding: calc(30 * var(--u)) calc(30 * var(--u));
+	margin-top: calc(28 * var(--u));
 	color: var(--c-white);
-	font-size: calc(28 * var(--u));
-	line-height: 1.8;
-	background: rgba(255, 255, 255, .12);
-	border-radius: calc(12 * var(--u));
+	font-size: calc(24 * var(--u));
+	line-height: 1.7;
+	text-align: center;
 }
 
 .gk-charge__hours-row {
-	display: flex;
-	gap: calc(16 * var(--u));
-	justify-content: center;
-	flex-wrap: wrap;
+	display: block;
 }
 
 .gk-charge__hours-row + .gk-charge__hours-row {
-	margin-top: calc(10 * var(--u));
+	margin-top: calc(4 * var(--u));
+}
+
+.gk-charge__hours-row dt,
+.gk-charge__hours-row dd {
+	display: inline;
 }
 
 .gk-charge__hours-row dt {
-	flex: 0 0 auto;
-	min-width: calc(150 * var(--u));
 	font-weight: 700;
-	text-align: right;
+}
+
+.gk-charge__hours-row dt::after {
+	content: "：";
 }
 
 .gk-charge__hours-note {
-	font-size: calc(24 * var(--u));
+	font-size: calc(22 * var(--u));
 }
 
-.gk-charge__cta {
-	padding-block: calc(32 * var(--u));
-	background: var(--c-brown);
+/* --------------------------------------------------------------------------
+   14-b. 購入からの流れ（タブ切替）
+   -------------------------------------------------------------------------- */
+.gk-flow {
+	max-width: calc(660 * var(--u));
+	margin: calc(50 * var(--u)) auto 0;
+}
+
+.gk-flow__tabs {
+	display: flex;
+	gap: calc(10 * var(--u));
+	padding-inline: calc(10 * var(--u));
+}
+
+.gk-flow__tab {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: calc(20 * var(--u)) calc(14 * var(--u));
+	color: rgba(255, 255, 255, .92);
+	font-size: calc(27 * var(--u));
+	font-weight: 700;
+	line-height: 1.3;
+	text-align: center;
+	background: var(--c-flow-tab);
+	border-radius: calc(16 * var(--u)) calc(16 * var(--u)) 0 0;
+	cursor: pointer;
+	transition: background-color .25s, color .25s;
+}
+
+.gk-flow__tab.is-active {
+	color: var(--c-white);
+	background: var(--c-flow-red);
+}
+
+.gk-flow__panel {
+	padding: calc(44 * var(--u)) calc(32 * var(--u)) calc(50 * var(--u));
+	background: var(--c-white);
+	border: calc(6 * var(--u)) solid var(--c-flow-red);
+	border-radius: 0 0 calc(16 * var(--u)) calc(16 * var(--u));
+}
+
+.gk-flow__panel[hidden] {
+	display: none;
+}
+
+.gk-flow__steps {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: calc(36 * var(--u));
+}
+
+.gk-flow__step {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: calc(22 * var(--u));
+	width: 100%;
+	max-width: calc(540 * var(--u));
+	padding: calc(22 * var(--u)) calc(46 * var(--u));
+	color: var(--c-white);
+	font-size: calc(30 * var(--u));
+	font-weight: 700;
+	line-height: 1.35;
+	background: var(--c-blue);
+	transform: skewX(-9deg);
+	box-shadow: calc(6 * var(--u)) calc(7 * var(--u)) 0 rgba(0, 0, 0, .16);
+}
+
+.gk-flow__num,
+.gk-flow__label {
+	transform: skewX(9deg);
+}
+
+.gk-flow__num {
+	display: grid;
+	place-items: center;
+	flex: 0 0 auto;
+	width: calc(48 * var(--u));
+	height: calc(48 * var(--u));
+	border-radius: 50%;
+	background: var(--c-white);
+	color: var(--c-blue);
+	font-size: calc(28 * var(--u));
+}
+
+/* ステップ間のオレンジ▼ */
+.gk-flow__step:not(:last-child)::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	bottom: calc(-27 * var(--u));
+	width: 0;
+	height: 0;
+	border-left: calc(15 * var(--u)) solid transparent;
+	border-right: calc(15 * var(--u)) solid transparent;
+	border-top: calc(17 * var(--u)) solid var(--c-orange-bg);
+	transform: translateX(-50%) skewX(9deg);
+}
+
+.gk-flow__btns {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	margin-top: calc(52 * var(--u));
+}
+
+/* ステップ→ボタン間のオレンジ▼ */
+.gk-flow__btns::before {
+	content: "";
+	position: absolute;
+	top: calc(-35 * var(--u));
+	left: 50%;
+	width: 0;
+	height: 0;
+	border-left: calc(15 * var(--u)) solid transparent;
+	border-right: calc(15 * var(--u)) solid transparent;
+	border-top: calc(17 * var(--u)) solid var(--c-orange-bg);
+	transform: translateX(-50%);
 }
 
 /* --------------------------------------------------------------------------
@@ -1277,8 +1422,16 @@ body.g-kart {
 	border: 0;
 }
 
+.gk-access__name {
+	margin-top: calc(48 * var(--u));
+	color: var(--c-white);
+	font-size: calc(34 * var(--u));
+	font-weight: 700;
+	line-height: 1.4;
+}
+
 .gk-access__info {
-	margin-top: calc(50 * var(--u));
+	margin-top: calc(14 * var(--u));
 	font-size: calc(28 * var(--u));
 	line-height: 1.9;
 }
@@ -1294,9 +1447,20 @@ body.g-kart {
 	font-weight: 500;
 }
 
-.gk-access__navi {
-	margin-top: calc(24 * var(--u));
+.gk-access__note {
+	margin-top: calc(30 * var(--u));
+	padding: calc(26 * var(--u)) calc(30 * var(--u));
+	background: rgba(255, 255, 255, .12);
+	border-radius: calc(10 * var(--u));
+}
+
+.gk-access__note .gk-small {
+	color: var(--c-white);
 	line-height: 1.7;
+}
+
+.gk-access__note .gk-small + .gk-small {
+	margin-top: calc(8 * var(--u));
 }
 
 .gk-access .gk-btns {
@@ -1918,18 +2082,13 @@ body.g-kart {
 		margin-inline: auto;
 	}
 
-	.gk-charge__steps {
-		max-width: 900px;
-		margin-top: 30px;
-		margin-inline: auto;
+	.gk-charge__hours {
+		margin-top: 22px;
 	}
 
-	.gk-charge__steps img {
-		max-width: 100%;
-	}
-
-	.gk-charge__cta {
-		padding-block: 24px;
+	.gk-flow {
+		max-width: 560px;
+		margin-top: 40px;
 	}
 
 	/* --- ⑧1日の過ごし方 --- */

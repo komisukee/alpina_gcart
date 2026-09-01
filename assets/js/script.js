@@ -234,6 +234,46 @@
 	}
 
 	/* ----------------------------------------------------------------------
+	 * 6b. タブ切替（購入からの流れ）
+	 * -------------------------------------------------------------------- */
+	function initTabs() {
+		var groups = root.querySelectorAll('[data-gk-tabs]');
+
+		Array.prototype.forEach.call(groups, function (group) {
+			var tabs = group.querySelectorAll('[role="tab"]');
+			if (!tabs.length) return;
+
+			function activate(tab) {
+				Array.prototype.forEach.call(tabs, function (t) {
+					var selected = t === tab;
+					t.setAttribute('aria-selected', selected ? 'true' : 'false');
+					t.classList.toggle('is-active', selected);
+					t.tabIndex = selected ? 0 : -1;
+
+					var panel = document.getElementById(t.getAttribute('aria-controls'));
+					if (!panel) return;
+					panel.hidden = !selected;
+					panel.classList.toggle('is-active', selected);
+				});
+			}
+
+			Array.prototype.forEach.call(tabs, function (tab, i) {
+				tab.addEventListener('click', function () { activate(tab); });
+
+				tab.addEventListener('keydown', function (e) {
+					var idx = i;
+					if (e.key === 'ArrowRight' || e.key === 'ArrowDown') idx = (i + 1) % tabs.length;
+					else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') idx = (i - 1 + tabs.length) % tabs.length;
+					else return;
+					e.preventDefault();
+					tabs[idx].focus();
+					activate(tabs[idx]);
+				});
+			});
+		});
+	}
+
+	/* ----------------------------------------------------------------------
 	 * 6. 追従CTA（FVを通過したら表示）
 	 * -------------------------------------------------------------------- */
 	function initFloatingCta() {
@@ -260,6 +300,7 @@
 		initAccordion();
 		initMarquee();
 		initFadeShow();
+		initTabs();
 		initFloatingCta();
 	}
 
