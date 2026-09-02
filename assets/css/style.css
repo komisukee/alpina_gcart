@@ -463,7 +463,7 @@ body.g-kart {
 
 .gk-table th,
 .gk-table td {
-	padding: calc(16 * var(--u)) calc(20 * var(--u));
+	padding: calc(16 * var(--u)) calc(32 * var(--u));
 	font-size: calc(24 * var(--u));
 	text-align: left;
 	font-weight: 500;
@@ -523,6 +523,7 @@ body.g-kart {
 
 .gk-table--charge tbody td {
 	background: var(--c-white);
+	font-weight: bold;
 }
 
 .gk-table--charge tbody th,
@@ -530,13 +531,20 @@ body.g-kart {
 	text-align: center;
 }
 
-.gk-table--charge .gk-table__merge {
-	text-align: center;
+/* 券種テーブル：行の高さを揃える（前売り列の行数差を吸収） */
+.gk-table--tickets tbody tr:not(.gk-charge__bdrow) > th,
+.gk-table--tickets tbody tr:not(.gk-charge__bdrow) > td {
+	height: calc(104 * var(--u));
 }
 
 .gk-table--charge .gk-table__subnote {
 	display: block;
 	font-size: calc(14 * var(--u));
+	font-weight: bold;
+}
+
+.gk-table--charge td small {
+	font-size: .7em;
 	font-weight: bold;
 }
 
@@ -1201,11 +1209,14 @@ body.g-kart {
 	background: var(--c-orange);
 }
 
+.gk-charge .gk-h2 {
+	font-size: calc(43 * var(--u));
+}
+
 .gk-charge__sub {
-	margin-top: calc(-6 * var(--u));
+	margin-top: calc(24 * var(--u));
 	color: var(--c-white);
-	font-size: calc(32 * var(--u));
-	font-weight: 700;
+	font-size: calc(24 * var(--u));
 }
 
 .gk-charge .gk-tablewrap {
@@ -1244,6 +1255,267 @@ body.g-kart {
 
 .gk-charge__hours-note {
 	font-size: calc(22 * var(--u));
+}
+
+/* ロゴコンボ（清里テラス＋G-KART） */
+.gk-charge__combo {
+	margin-top: calc(56 * var(--u));
+	padding: calc(40 * var(--u)) calc(32 * var(--u));
+	background: var(--c-white);
+	border-radius: calc(24 * var(--u));
+}
+
+.gk-charge__logos {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: calc(20 * var(--u));
+}
+
+.gk-charge__logobox {
+	flex: 1 1 calc(280 * var(--u));
+	max-width: calc(320 * var(--u));
+	text-align: center;
+}
+
+.gk-charge__logoimgwrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: calc(90 * var(--u));
+}
+
+.gk-charge__logoimg {
+	width: 100%;
+	max-width: calc(240 * var(--u));
+	max-height: 100%;
+	object-fit: contain;
+}
+
+.gk-charge__logosub {
+	margin-top: calc(14 * var(--u));
+	color: var(--c-navy);
+	font-size: calc(22 * var(--u));
+	font-weight: 700;
+	line-height: 1.6;
+}
+
+.gk-charge__plus {
+	flex: 0 0 auto;
+	color: var(--c-orange);
+	font-size: calc(48 * var(--u));
+	font-weight: 900;
+	line-height: 1;
+}
+
+.gk-charge__combolead {
+	margin-top: calc(30 * var(--u));
+	color: var(--c-navy);
+	font-size: calc(30 * var(--u));
+	font-weight: 700;
+	line-height: 1.6;
+	text-align: center;
+}
+
+.gk-charge__combolead em {
+	color: var(--c-orange);
+}
+
+.gk-charge__combonote {
+	margin-top: calc(14 * var(--u));
+	color: rgba(11, 60, 93, .65);
+	font-size: calc(20 * var(--u));
+	line-height: 1.8;
+	text-align: center;
+}
+
+/* チケット一覧 */
+
+/* オススメ行の強調 */
+.gk-table--charge tbody tr.gk-charge__reco > th,
+.gk-table--charge tbody tr.gk-charge__reco > td,
+.gk-table--charge tbody tr.gk-charge__reco > td.gk-charge__precol {
+	background: #fff6d8;
+}
+
+.gk-table--charge tbody tr.gk-charge__reco > th {
+	position: relative;
+	overflow: hidden;
+}
+
+/* オススメ：セル左上の三角リボン */
+.gk-charge__badge {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(76 * var(--u));
+	height: calc(76 * var(--u));
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.gk-charge__badge::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--c-cta);
+	clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.gk-charge__badge span {
+	position: absolute;
+    top: calc(21 * var(--u));
+    left: calc(-20 * var(--u));
+	width: calc(100 * var(--u));
+	color: var(--c-white);
+	font-size: calc(14 * var(--u));
+	font-weight: 700;
+	line-height: 1;
+	text-align: center;
+	transform: rotate(-45deg);
+}
+
+.gk-charge__off {
+	display: block;
+	margin-top: calc(4 * var(--u));
+	color: #c23b2e;
+	font-size: calc(18 * var(--u));
+	font-weight: 700;
+	white-space: normal;
+}
+
+.gk-charge__altprice {
+	display: block;
+	margin-top: calc(2 * var(--u));
+	color: #c23b2e;
+	font-size: calc(20 * var(--u));
+	font-weight: 700;
+	white-space: normal;
+}
+
+.gk-charge__none {
+	color: #aab4bc;
+	font-size: calc(20 * var(--u));
+	font-weight: 700;
+}
+
+.gk-charge__bdrow td {
+	padding-block: calc(20 * var(--u));
+	text-align: center;
+}
+
+.gk-charge__bd {
+	display: flex;
+	align-items: center;
+	gap: calc(16 * var(--u));
+	text-align: left;
+}
+
+.gk-charge__bdbar {
+	display: flex;
+	flex: 0 0 auto;
+	height: calc(28 * var(--u));
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.gk-charge__bdbar i {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-style: normal;
+	font-size: calc(14 * var(--u));
+	color: var(--c-white);
+	white-space: nowrap;
+}
+
+.gk-charge__bdbar-t {
+	background: var(--c-blue);
+}
+
+.gk-charge__bdbar-g {
+	background: var(--c-cta);
+}
+
+.gk-charge__bdlabel {
+	flex: 0 1 auto;
+	color: var(--c-text);
+	font-size: calc(18 * var(--u));
+	line-height: 1.4;
+	white-space: normal;
+}
+
+.gk-charge__cap {
+	margin-top: calc(20 * var(--u));
+	font-size: calc(18 * var(--u));
+	text-align: center;
+}
+
+/* 前売り列の強調 */
+.gk-table--charge thead th.gk-charge__precol {
+	background: var(--c-flow-red);
+	color: var(--c-white);
+}
+
+.gk-table--charge tbody td.gk-charge__precol {
+	background: #fdeceb;
+	color: var(--c-flow-red);
+}
+
+/* セクション内小見出し（絶景！清里テラス リフト券／チケットの買い方） */
+.gk-charge__title {
+	font-size: calc(40 * var(--u));
+}
+
+/* 絶景！清里テラス　リフト券 */
+.gk-charge__lift {
+	margin-top: calc(120 * var(--u));
+}
+
+.gk-charge__lift-note {
+	margin-top: calc(14 * var(--u));
+}
+
+/* チケットの買い方 */
+.gk-charge__flow-title {
+	margin-top: calc(64 * var(--u));
+}
+
+/* 注意事項アコーディオン */
+.gk-charge__notes {
+	margin-top: calc(64 * var(--u));
+}
+
+.gk-charge__warn {
+	color: #c23b2e;
+	font-weight: 700;
+}
+
+/* 前売フック */
+.gk-charge__hook {
+	margin-top: calc(40 * var(--u));
+	padding: calc(36 * var(--u)) calc(32 * var(--u));
+	background: var(--c-navy);
+	border-radius: calc(20 * var(--u));
+	text-align: center;
+}
+
+.gk-charge__hook-t {
+	color: var(--c-white);
+	font-size: calc(32 * var(--u));
+	font-weight: 900;
+	line-height: 1.6;
+}
+
+.gk-charge__hook-t em {
+	color: #ffc46b;
+}
+
+.gk-charge__hook-d {
+	margin-top: calc(16 * var(--u));
+	color: rgba(255, 255, 255, .8);
+	font-size: calc(22 * var(--u));
+	line-height: 1.9;
 }
 
 /* --------------------------------------------------------------------------
@@ -1305,7 +1577,7 @@ body.g-kart {
 	align-items: center;
 	gap: calc(22 * var(--u));
 	width: 100%;
-	max-width: calc(540 * var(--u));
+	max-width: calc(800 * var(--u));
 	padding: calc(22 * var(--u)) calc(46 * var(--u));
 	color: var(--c-white);
 	font-size: calc(30 * var(--u));
@@ -1366,6 +1638,14 @@ body.g-kart {
 	border-right: calc(15 * var(--u)) solid transparent;
 	border-top: calc(17 * var(--u)) solid var(--c-orange-bg);
 	transform: translateX(-50%);
+}
+
+.gk-flow__note {
+	margin-top: calc(30 * var(--u));
+	color: var(--c-text);
+	font-size: calc(23 * var(--u));
+	line-height: 1.8;
+	text-align: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -2166,7 +2446,7 @@ body.g-kart {
 
 	/* --- ⑦料金 --- */
 	.gk-charge__inner {
-		padding: 70px 50px 20px;
+		padding: 70px 50px 60px;
 	}
 
 	.gk-charge .gk-tablewrap {
@@ -2184,8 +2464,23 @@ body.g-kart {
 		margin-top: 22px;
 	}
 
+	.gk-charge__combo,
+	.gk-charge__hook,
+	.gk-charge__notes {
+		max-width: 800px;
+		margin-inline: auto;
+	}
+
+	.gk-charge__combo {
+		padding: 36px 40px;
+	}
+
+	.gk-charge__logoimgwrap {
+		height: 74px;
+	}
+
 	.gk-flow {
-		max-width: 560px;
+		max-width: 800px;
 		margin-top: 40px;
 	}
 

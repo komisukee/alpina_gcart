@@ -477,37 +477,146 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 
                     <div class="gk-charge__inner">
                         <div class="gk-container">
-                            <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>料金</h2>
-                            <p class="gk-charge__sub gk-center" data-gk-fade>（すべてリフト券込み）</p>
+                            <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>
+                                サンメドウズ清里を1日満喫。<br>
+                                清里テラスとG-KARTのコンボ券。
+                            </h2>
+                            <p class="gk-charge__sub gk-center" data-gk-fade>G-KARTのチケットには、山頂の清里テラスへ上がるリフト券が必ず含まれています。</p>
 
+                            <!-- ロゴコンボ（清里テラス＋G-KART） -->
+                            <div class="gk-charge__combo" data-gk-fade>
+                                <div class="gk-charge__logos">
+                                    <div class="gk-charge__logobox">
+                                        <div class="gk-charge__logoimgwrap">
+                                            <img class="gk-charge__logoimg" src="assets/images/logo_kiyosato.png" alt="清里テラス" width="557" height="106" loading="lazy" decoding="async">
+                                        </div>
+                                        <p class="gk-charge__logosub">リフト券<br>（パノラマリフト・フラワーリフト）</p>
+                                    </div>
+                                    <span class="gk-charge__plus" aria-hidden="true">＋</span>
+                                    <div class="gk-charge__logobox">
+                                        <div class="gk-charge__logoimgwrap">
+                                            <img class="gk-charge__logoimg" src="assets/images/logo_gkart.png" alt="G-KART" width="802" height="632" loading="lazy" decoding="async">
+                                        </div>
+                                        <p class="gk-charge__logosub">2回・3回・5回<br>からお選びいただけます</p>
+                                    </div>
+                                </div>
+                                <p class="gk-charge__combolead">清里テラスと G-KART、<br class="gk-br-sp"><em>2つが楽しめます。</em></p>
+                                <p class="gk-charge__combonote">スタート地点は標高1,700mの山頂。そこへ上がるパノラマリフトが、清里テラスへのリフトと同じものです。</p>
+                            </div>
+
+                            <!-- チケット一覧 -->
                             <div class="gk-tablewrap js-scrollable" data-gk-fade>
-                                <table class="gk-table gk-table--charge">
+                                <table class="gk-table gk-table--charge gk-table--tickets">
                                     <thead>
                                         <tr>
-                                            <th scope="col" rowspan="2">券種</th>
-                                            <th scope="colgroup" colspan="3">当日窓口購入</th>
-                                            <th scope="col">前日までに購入</th>
-                                        </tr>
-                                        <tr>
-                                            <th scope="col">G-KART乗車券</th>
-                                            <th scope="col">3回乗車券</th>
-                                            <th scope="col">5回乗車券</th>
-                                            <th scope="col">前売券</th>
+                                            <th scope="col">券種</th>
+                                            <th scope="col">大人<span class="gk-table__subnote">中学生以上</span></th>
+                                            <th scope="col">子供<span class="gk-table__subnote">小学生</span></th>
+                                            <th scope="col" class="gk-charge__precol">前売り<span class="gk-table__subnote">前日まで</span></th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr><th scope="row">大人</th><td>5,000円</td><td>6,000円</td><td>7,000円</td><td>5,000円〜</td></tr>
-                                        <tr><th scope="row">子供</th><td>4,400円</td><td>5,400円</td><td>6,400円</td><td>5,800円〜</td></tr>
-                                        <tr><th scope="row" class="gk-table__sub">タンデム<span class="gk-table__subnote">(小学1年生〜2年生)</span></th><td colspan="3" class="gk-table__merge">3,400円</td><td>2,700円〜</td></tr>
-                                        <tr><th scope="row" class="gk-table__sub">タンデム<span class="gk-table__subnote">(3歳以上〜)</span></th><td colspan="3" class="gk-table__merge">3,200円</td><td>2,500円〜</td></tr>
+                                        <tr>
+                                            <th scope="row">G-KART 2回乗車</th>
+                                            <td>5,000<small>円</small></td>
+                                            <td>4,400<small>円</small></td>
+                                            <td class="gk-charge__precol"><span class="gk-charge__none">当日窓口のみ</span></td>
+                                        </tr>
+                                        <tr class="gk-charge__bdrow">
+                                            <td colspan="4">
+                                                <div class="gk-charge__bd">
+                                                    <div class="gk-charge__bdbar" style="width:calc(420 * var(--u))">
+                                                        <i class="gk-charge__bdbar-t" style="flex:3">リフト券 3,000円</i>
+                                                        <i class="gk-charge__bdbar-g" style="flex:2">G-KART2回 2,000円</i>
+                                                    </div>
+                                                    <p class="gk-charge__bdlabel">▶1回乗車あたり1,000円</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="gk-charge__reco">
+                                            <th scope="row"><span class="gk-charge__badge"><span>オススメ</span></span>G-KART 3回乗車</th>
+                                            <td>6,000<small>円</small></td>
+                                            <td>5,400<small>円</small></td>
+                                            <td class="gk-charge__precol">5,000<small>円〜</small><span class="gk-charge__off">1,000円お得</span></td>
+                                        </tr>
+                                        <tr class="gk-charge__bdrow gk-charge__reco">
+                                            <td colspan="4">
+                                                <div class="gk-charge__bd">
+                                                    <div class="gk-charge__bdbar" style="width:calc(500 * var(--u))">
+                                                        <i class="gk-charge__bdbar-t" style="flex:3">リフト券 3,000円</i>
+                                                        <i class="gk-charge__bdbar-g" style="flex:3">G-KART3回 3,000円</i>
+                                                    </div>
+                                                    <p class="gk-charge__bdlabel">▶1回乗車あたり1,000円</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row">G-KART 5回乗車</th>
+                                            <td>7,000<small>円</small></td>
+                                            <td>6,400<small>円</small></td>
+                                            <td class="gk-charge__precol">5,800<small>円〜</small><span class="gk-charge__off">1,200円お得</span></td>
+                                        </tr>
+                                        <tr class="gk-charge__bdrow">
+                                            <td colspan="4">
+                                                <div class="gk-charge__bd">
+                                                    <div class="gk-charge__bdbar" style="width:calc(580 * var(--u))">
+                                                        <i class="gk-charge__bdbar-t" style="flex:3">リフト券 3,000円</i>
+                                                        <i class="gk-charge__bdbar-g" style="flex:4">G-KART5回 4,000円</i>
+                                                    </div>
+                                                    <p class="gk-charge__bdlabel">▶1回乗車あたり800円。いちばんお得です</p>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <th scope="row" class="gk-table__sub">タンデム乗車<span class="gk-table__subnote">保護者の方の回数分、同乗できます</span></th>
+                                            <td>3,400<small>円</small><span class="gk-table__subnote">小学3年生未満の小学生</span></td>
+                                            <td>3,200<small>円</small><span class="gk-table__subnote">3歳以上の未就学児</span></td>
+                                            <td class="gk-charge__precol">3,300<small>円〜</small><span class="gk-charge__altprice">／ 3,100<small>円〜</small></span></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
+                            <p class="gk-small gk-body--white gk-charge__cap">前売りは3回券・5回券のみの販売です。金額はご利用日によって変わります。</p>
 
-                            <dl class="gk-charge__hours" data-gk-fade>
+                            <!-- 前売フック -->
+                            <div class="gk-charge__hook" data-gk-fade>
+                                <p class="gk-charge__hook-t">前売りなら、<em>3回券が2回券と同じ値段。</em></p>
+                                <p class="gk-charge__hook-d">当日窓口の2回券が5,000円。前売りの3回券も5,000円〜。<br>前日までのご購入で、同じ金額でもう1回多く走れます。</p>
+                            </div>
+
+                            <!-- 絶景！清里テラス　リフト券 -->
+                            <div class="gk-charge__lift" data-gk-fade>
+                                <h3 class="gk-h3 gk-h3--white gk-center gk-charge__title">絶景！清里テラス　リフト券</h3>
+                                <p class="gk-small gk-body--white gk-center gk-charge__lift-note">テラスだけをご利用の方はこちら。パノラマリフト・フラワーリフトにご乗車いただけます。</p>
+
+                                <div class="gk-tablewrap js-scrollable">
+                                    <table class="gk-table gk-table--charge">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">区分</th>
+                                                <th scope="col">当日窓口</th>
+                                                <th scope="col" class="gk-charge__precol">前売り<span class="gk-table__subnote">前日まで</span></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><th scope="row">大人<span class="gk-table__subnote">中学生以上</span></th><td>3,000<small>円</small></td><td class="gk-charge__precol">2,300<small>円〜</small></td></tr>
+                                            <tr><th scope="row">子供<span class="gk-table__subnote">小学生</span></th><td>2,400<small>円</small></td><td class="gk-charge__precol">1,700<small>円〜</small></td></tr>
+                                            <tr><th scope="row">幼児<span class="gk-table__subnote">3歳以上の未就学児</span></th><td>2,200<small>円</small></td><td class="gk-charge__precol">1,500<small>円〜</small></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="gk-small gk-body--white gk-charge__cap">前売りの金額はご利用日によって変わります。</p>
+                            </div>
+
+                            <!-- <dl class="gk-charge__hours" data-gk-fade>
                                 <div class="gk-charge__hours-row"><dt>営業期間</dt><dd>2026年4月29日(水・祝)〜11月3日(火・祝)</dd></div>
                                 <div class="gk-charge__hours-row"><dt>営業時間</dt><dd>9:30〜17:00<span class="gk-charge__hours-note">（G-KART最終受付16:00）</span></dd></div>
-                            </dl>
+                            </dl> -->
+
+                            <h3 class="gk-h3 gk-h3--white gk-center gk-charge__flow-title gk-charge__title" data-gk-fade>チケットの買い方</h3>
 
                             <div class="gk-flow" data-gk-tabs data-gk-fade>
                                 <div class="gk-flow__tabs" role="tablist" aria-label="購入方法の流れ">
@@ -517,10 +626,11 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 
                                 <div class="gk-flow__panel is-active" id="gk-flow-panel-advance" role="tabpanel" aria-labelledby="gk-flow-tab-advance">
                                     <ol class="gk-flow__steps">
-                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">前日までに購入でお得</span></li>
-                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">引換優先レーンで引き換え</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">前日までにご購入いただくとお得です</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">チケット売場の引き換え専用レーンで引き換え</span></li>
                                         <li class="gk-flow__step"><span class="gk-flow__num">3</span><span class="gk-flow__label">フラワーリフト乗り場へ</span></li>
                                     </ol>
+                                    <p class="gk-flow__note">引き換えは必要ですが、専用レーンがありますのでスムーズにお受け取りいただけます。<br>前売りは3回券・5回券のみの販売です。</p>
                                     <div class="gk-flow__btns">
                                         <a class="gk-btn gk-btn--primary" href="https://www.kkday.com/ja/product/142128?cid=14300&amp;ud1=officialsite" target="_blank" rel="noopener">
                                             <span class="gk-btn__label">前売券を購入する</span>
@@ -531,9 +641,77 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 
                                 <div class="gk-flow__panel" id="gk-flow-panel-sameday" role="tabpanel" aria-labelledby="gk-flow-tab-sameday" hidden>
                                     <ol class="gk-flow__steps">
-                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">当日窓口で並びG-KART乗車券を購入</span></li>
-                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">フラワーリフト乗り場へ</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">1</span><span class="gk-flow__label">チケット売場で券種をお選びください</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">2</span><span class="gk-flow__label">お支払い（各種キャッシュレス決済に対応）</span></li>
+                                        <li class="gk-flow__step"><span class="gk-flow__num">3</span><span class="gk-flow__label">フラワーリフト乗り場へ</span></li>
                                     </ol>
+                                    <p class="gk-flow__note">当日窓口では2回券もお求めいただけます。<br>混雑時はお待ちいただく場合があります。</p>
+                                    <div class="gk-flow__btns">
+                                        <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/green/hours_fare/" target="_blank" rel="noopener">
+                                            <span class="gk-btn__label">料金・営業時間を見る</span>
+                                            <span class="gk-btn__arrow" aria-hidden="true"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ご利用にあたってのご注意 -->
+                            <div class="gk-charge__notes" data-gk-fade>
+                                <div class="gk-acc gk-acc--navy">
+                                    <h3 class="gk-acc__head">
+                                        <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-charge-acc-1">
+                                            <span class="gk-acc__title">ご利用にあたってのお願い</span>
+                                            <span class="gk-acc__icon" aria-hidden="true"></span>
+                                        </button>
+                                    </h3>
+                                    <div class="gk-acc__panel" id="gk-charge-acc-1">
+                                        <div class="gk-acc__inner">
+                                            <ul class="gk-dotlist">
+                                                <li>ひとり乗りの対象は小学3年生以上、身長110〜120cm以上・両足が床に届く方に限ります。</li>
+                                                <li>3歳から小学2年生までのお子様は、保護者の方とのタンデム乗車をご利用ください。</li>
+                                                <li>お酒を召し上がった方、妊娠中の方はご乗車いただけません。</li>
+                                                <li>初めての方は、まずビギナーコースからお楽しみください。</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gk-acc gk-acc--navy">
+                                    <h3 class="gk-acc__head">
+                                        <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-charge-acc-2">
+                                            <span class="gk-acc__title">料金に関するご注意</span>
+                                            <span class="gk-acc__icon" aria-hidden="true"></span>
+                                        </button>
+                                    </h3>
+                                    <div class="gk-acc__panel" id="gk-charge-acc-2">
+                                        <div class="gk-acc__inner">
+                                            <ul class="gk-dotlist">
+                                                <li class="gk-charge__warn">ご精算後の払い戻しはできませんのでご注意ください。</li>
+                                                <li>前売券の金額はご利用日によって変わります。表示は最も安い場合の金額です。</li>
+                                                <li>前売りでご購入いただけるのは3回券・5回券のみです。2回券は当日窓口でのお取り扱いとなります。</li>
+                                                <li>雨天時も運行しています。リフト券をお持ちの方には簡易カッパをお渡ししています。</li>
+                                                <li>雷・強風の際は運行を見合わせる場合があります。</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="gk-acc gk-acc--navy">
+                                    <h3 class="gk-acc__head">
+                                        <button class="gk-acc__btn" type="button" aria-expanded="false" aria-controls="gk-charge-acc-3">
+                                            <span class="gk-acc__title">年齢区分について</span>
+                                            <span class="gk-acc__icon" aria-hidden="true"></span>
+                                        </button>
+                                    </h3>
+                                    <div class="gk-acc__panel" id="gk-charge-acc-3">
+                                        <div class="gk-acc__inner">
+                                            <ul class="gk-dotlist">
+                                                <li>大人：中学生以上</li>
+                                                <li>子供：小学生</li>
+                                                <li>幼児：3歳以上の未就学児</li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
