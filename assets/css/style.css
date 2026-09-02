@@ -49,7 +49,7 @@ body.g-kart {
 	--c-yellow: #ffff64;
 	--c-text: #1a1a1a;
 	--c-gray-bg: #f0f0f0;
-	--c-table-head: #e0d8cd;
+	--c-table-head: #e8d8ca;
 	--c-table-zebra: #f2f2f2;
 
 	/* type：外部フォントは使わず OS 標準の sans-serif を使用
@@ -171,6 +171,12 @@ body.g-kart {
 .gk :focus-visible {
 	outline: calc(4 * var(--u)) solid var(--c-blue);
 	outline-offset: calc(2 * var(--u));
+}
+
+.gk table,
+.gk th,
+.gk td {
+	font-family: var(--f-base) !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -435,6 +441,12 @@ body.g-kart {
 	line-height: 1.6;
 }
 
+.gk-tablewrap {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
 .gk-table {
 	font-size: calc(26 * var(--u));
 	line-height: 1.5;
@@ -442,22 +454,27 @@ body.g-kart {
 }
 
 .gk-table th {
-	padding: calc(7 * var(--u)) calc(22 * var(--u));
+	padding: calc(16 * var(--u)) calc(26 * var(--u));
 	text-align: left;
 	font-weight: bold;
-	white-space: nowrap;
 	vertical-align: middle;
-	border-right: 1px solid #d9d9d9;
+	border-right: 1px solid #e6e6e6;
 }
 
 .gk-table th,
 .gk-table td {
-	padding: calc(7 * var(--u)) calc(22 * var(--u));
+	padding: calc(16 * var(--u)) calc(20 * var(--u));
+	font-size: calc(24 * var(--u));
 	text-align: left;
 	font-weight: 500;
-	white-space: nowrap;
 	vertical-align: middle;
-	border-right: 1px solid #d9d9d9;
+	border-right: 1px solid #e6e6e6;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.gk-table tbody tr:last-child th,
+.gk-table tbody tr:last-child td {
+	border-bottom: 0;
 }
 
 .gk-table th:last-child,
@@ -483,12 +500,44 @@ body.g-kart {
 	text-align: center;
 }
 
+.gk-table--charge thead tr:first-child th:first-child {
+	background: #f8e4d5;
+	padding: calc(4 * var(--u)) calc(20 * var(--u));
+}
+
+.gk-table--charge thead tr:first-child th:nth-child(2),
+.gk-table--charge thead tr:last-child th:not(:last-child) {
+	background: #edc9aa;
+	padding: calc(4 * var(--u)) calc(20 * var(--u));
+}
+
+.gk-table--charge thead th:last-child {
+	background: #efae7d;
+	padding: calc(4 * var(--u)) calc(20 * var(--u));
+}
+
+.gk-table--charge tbody th {
+	background: var(--c-table-zebra);
+	font-weight: bold;
+}
+
+.gk-table--charge tbody td {
+	background: var(--c-white);
+}
+
+.gk-table--charge tbody th,
+.gk-table--charge tbody td {
+	text-align: center;
+}
+
 .gk-table--charge .gk-table__merge {
 	text-align: center;
 }
 
-.gk-table--charge .gk-table__sub {
-	font-size: calc(22 * var(--u));
+.gk-table--charge .gk-table__subnote {
+	display: block;
+	font-size: calc(14 * var(--u));
+	font-weight: bold;
 }
 
 .gk-notes {
@@ -542,7 +591,8 @@ body.g-kart {
 	position: relative;
 }
 
-.gk-fv__bg img {
+.gk-fv__bg {
+	display: block;
 	width: 100%;
 	/* SPはカンプ(750:430)、PCはカンプ(1280:575)の比率でトリミング */
 	aspect-ratio: 750 / 430;
@@ -1487,6 +1537,10 @@ body.g-kart {
 	margin-top: calc(24 * var(--u));
 }
 
+.gk-faq .gk-btns {
+	margin-top: calc(60 * var(--u));
+}
+
 /* --------------------------------------------------------------------------
    18. ⑪CTA2
    -------------------------------------------------------------------------- */
@@ -1657,6 +1711,19 @@ body.g-kart {
 }
 
 /* ==========================================================================
+   21.5 SP（1023px以下）：搭乗条件・料金の表は固定幅＋横スクロール
+   ========================================================================== */
+@media screen and (max-width: 1023px) {
+
+	.gk-joken .gk-table th,
+	.gk-joken .gk-table td,
+	.gk-charge .gk-table th,
+	.gk-charge .gk-table td {
+		white-space: nowrap;
+	}
+}
+
+/* ==========================================================================
    22. PC（1024px以上）
        カンプ PC_1.png / PC_2.png（幅1280px＝等倍）に合わせる
    ========================================================================== */
@@ -1714,7 +1781,7 @@ body.g-kart {
 	}
 
 	/* --- ①FV --- */
-	.gk-fv__bg img {
+	.gk-fv__bg {
 		aspect-ratio: 1280 / 575;
 	}
 
@@ -1927,7 +1994,32 @@ body.g-kart {
 	}
 
 	.gk-joken .gk-tablewrap {
+		width: 100%;
 		margin-top: 30px;
+		overflow-x: visible;
+	}
+
+	.gk-joken .gk-table {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	.gk-joken .gk-table th,
+	.gk-joken .gk-table td {
+		font-size: 14px;
+	}
+
+	.gk-joken .gk-table td {
+		word-break : break-all;
+	}
+
+	.gk-joken .gk-table th:nth-child(1) {
+		width: 128px;
+	}
+
+	.gk-joken .gk-table th:nth-child(2),
+	.gk-joken .gk-table td:nth-child(2) {
+		width: 118px;
 	}
 
 	.gk-joken__hand {
@@ -2078,8 +2170,14 @@ body.g-kart {
 	}
 
 	.gk-charge .gk-tablewrap {
-		max-width: 620px;
-		margin-inline: auto;
+		width: 100%;
+		max-width: 800px;
+		overflow-x: visible;
+		margin: calc(50 * var(--u)) auto 0;
+	}
+
+	.gk-charge .gk-table {
+		width: 100%;
 	}
 
 	.gk-charge__hours {

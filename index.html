@@ -210,20 +210,16 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
 
                 <!-- =========================================================
                      ①FV
-                     ※デザインカンプ画像を仮置き（差し替え予定）
                 ========================================================== -->
                 <div id="fv" class="gk-fv">
                     <div class="gk-fv__media">
-                        <picture class="gk-fv__bg">
-                            <source media="(min-width: 1024px)" type="image/webp" srcset="assets/images/fv_bg_pc.webp">
-                            <source media="(min-width: 1024px)" srcset="assets/images/fv_bg_pc.jpg">
-                            <source type="image/webp" srcset="assets/images/fv_bg_sp.webp">
-                            <img src="assets/images/fv_bg_sp.jpg" alt="" width="800" height="360" fetchpriority="high">
-                        </picture>
-                        <picture class="gk-fv__title">
+                        <video class="gk-fv__bg" autoplay muted loop playsinline preload="auto" poster="assets/images/fv_bg_sp.jpg">
+                            <source src="assets/images/fv_mov_v1.mp4" type="video/mp4">
+                        </video>
+                        <!-- <picture class="gk-fv__title">
                             <source type="image/webp" srcset="assets/images/fv_title.webp">
                             <img src="assets/images/fv_title.png" alt="G-KART KIYOSATO" width="802" height="632" fetchpriority="high">
-                        </picture>
+                        </picture> -->
                     </div>
                 </div>
 
@@ -248,7 +244,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                         </div>
 
                         <div class="gk-about__catch">
-                            <h2 class="gk-h2 gk-center" data-gk-fade>いち度乗ったら<br class="gk-br-sp">やめられない。<br>絶景爽快ライド。</h2>
+                            <h1 class="gk-h2 gk-center" data-gk-fade>いち度乗ったら<br class="gk-br-sp">やめられない。<br>絶景爽快ライド。</h1>
                             <figure class="gk-about__cutout2" data-gk-fade="right" aria-hidden="true">
                                 <picture><source type="image/webp" srcset="assets/images/2nd_2.webp"><img src="assets/images/2nd_2.png" alt="" width="388" height="360" loading="lazy" decoding="async"></picture>
                             </figure>
@@ -321,7 +317,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             </figure>
 
                             <div class="gk-joken__body">
-                                <div class="gk-tablewrap" data-gk-fade>
+                                <div class="gk-tablewrap js-scrollable" data-gk-fade>
                                     <table class="gk-table">
                                         <thead>
                                             <tr><th scope="col">年齢</th><th scope="col">乗り方</th><th scope="col">購入券種</th></tr>
@@ -484,7 +480,7 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                             <h2 class="gk-h2 gk-h2--white gk-center" data-gk-fade>料金</h2>
                             <p class="gk-charge__sub gk-center" data-gk-fade>（すべてリフト券込み）</p>
 
-                            <div class="gk-tablewrap" data-gk-fade>
+                            <div class="gk-tablewrap js-scrollable" data-gk-fade>
                                 <table class="gk-table gk-table--charge">
                                     <thead>
                                         <tr>
@@ -502,8 +498,8 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                     <tbody>
                                         <tr><th scope="row">大人</th><td>5,000円</td><td>6,000円</td><td>7,000円</td><td>5,000円〜</td></tr>
                                         <tr><th scope="row">子供</th><td>4,400円</td><td>5,400円</td><td>6,400円</td><td>5,800円〜</td></tr>
-                                        <tr><th scope="row" class="gk-table__sub">タンデム(小学1年生〜2年生)</th><td colspan="3" class="gk-table__merge">3,400円</td><td>2,700円〜</td></tr>
-                                        <tr><th scope="row" class="gk-table__sub">タンデム(3歳以上〜)</th><td colspan="3" class="gk-table__merge">3,200円</td><td>2,500円〜</td></tr>
+                                        <tr><th scope="row" class="gk-table__sub">タンデム<span class="gk-table__subnote">(小学1年生〜2年生)</span></th><td colspan="3" class="gk-table__merge">3,400円</td><td>2,700円〜</td></tr>
+                                        <tr><th scope="row" class="gk-table__sub">タンデム<span class="gk-table__subnote">(3歳以上〜)</span></th><td colspan="3" class="gk-table__merge">3,200円</td><td>2,500円〜</td></tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -553,8 +549,8 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                 <div id="dialy" class="gk-sec gk-daily">
                     <div class="gk-daily__cols">
                         <div class="gk-daily__head">
-                            <h2 class="gk-h2 gk-center gk-pc-left" data-gk-fade>走る絶景から、<br>憩う絶景へ</h2>
-                            <p class="gk-sub gk-center gk-pc-left" data-gk-fade>同じリフト券で、<br>標高1,900mの清里テラスまで。</p>
+                            <h2 class="gk-h2 gk-center" data-gk-fade>走る絶景から、<br>憩う絶景へ</h2>
+                            <p class="gk-sub gk-center" data-gk-fade>同じリフト券で、<br>標高1,900mの清里テラスまで。</p>
                         </div>
 
                         <!-- SP：ループスライダー / PC：右カラムでフェード切替 -->
@@ -732,6 +728,13 @@ var sb_instagram_js_options = {"font_method":"svg","resized_url":"https://www.su
                                     </ol>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="gk-btns" data-gk-fade>
+                            <a class="gk-btn gk-btn--outline" href="https://www.sunmeadows.co.jp/report/regulations/" target="_blank" rel="noopener">
+                                <span class="gk-btn__label">施設利用約款はこちら</span>
+                                <span class="gk-btn__arrow" aria-hidden="true"></span>
+                            </a>
                         </div>
                     </div>
                 </div>
